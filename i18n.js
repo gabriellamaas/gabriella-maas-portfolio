@@ -164,7 +164,7 @@ const portfolioAttrEn = {
   "Focos atuais de aprendizado": "Current learning focus",
   "Retrato de Gabriella em área externa": "Portrait of Gabriella outdoors",
   "Gabriella segurando um bolo de aniversário": "Gabriella holding a birthday cake",
-  "Notebook com The Sims 4 aberto": "Laptop with The Sims 4 open",
+  "Retrato de Gabriella": "Portrait of Gabriella",
   "Jade ao lado do computador": "Jade next to the computer",
   "Desenho de cerejas em um caderno": "Cherry drawing in a notebook",
   "Peças de quebra-cabeça sobre uma mesa": "Jigsaw puzzle pieces on a table",
