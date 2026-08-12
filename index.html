@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Portfólio de Gabriella Maas — Quality Assurance, qualidade de produto, testes manuais e automação." name="description"/>
+<title>Gabriella Maas - QA</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Schibsted+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div aria-hidden="true" class="scroll-progress"><span id="scrollProgress"></span></div>
+<header class="site-header" id="siteHeader">
+<a aria-label="Voltar ao início" class="brand" href="#top">gabriella além do currículo</a>
+<div class="header-right">
+<div aria-label="Idioma do portfólio" class="language-switch">
+<button aria-pressed="true" class="language-option is-active" data-lang="pt" type="button">PT</button>
+<button aria-pressed="false" class="language-option" data-lang="en" type="button">EN</button>
+</div>
+<nav aria-label="Navegação principal" class="main-nav" id="mainNav">
+<a href="#sobre">Sobre</a>
+<a href="#visao">Visão de QA</a>
+<a href="#experiencia">Experiência</a>
+<a href="#projetos">Projetos</a>
+<a href="#alem">Além do QA</a>
+<a class="nav-contact" href="#contato">Contato</a>
+</nav>
+<button aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span>
+</button>
+</div>
+</header>
+<main id="top">
+<section aria-labelledby="hero-title" class="hero section-shell">
+<div class="hero-copy reveal" data-testid="gabriella">
+<p class="eyebrow accent">Quality Assurance · Software Quality</p>
+<h1 class="hero-name" id="hero-title">Gabriella<br/><span class="hero-name-last">Maas<span aria-hidden="true" class="hero-caret"></span></span></h1>
+<p class="hero-statement">Qualidade não começa no teste. Começa em entender o produto.</p>
+<p class="hero-lead">Trabalho perto de Produto e Desenvolvimento, do refinamento à homologação, investigando como regras, fluxos e integrações se conectam antes que uma mudança chegue ao usuário.</p>
+<a aria-label="Continuar para a próxima seção" class="hero-scroll-cue" href="#sobre"><span aria-hidden="true">↓</span></a>
+<div aria-label="Links profissionais" class="social-links">
+<a href="https://www.linkedin.com/in/gabriella-maas/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://github.com/gabriellamaas" rel="noopener" target="_blank">GitHub</a>
+<a href="mailto:gabriellamaas26@gmail.com">E-mail</a>
+</div>
+</div>
+<div aria-label="Exemplo de teste Cypress do próprio portfólio" class="hero-code reveal">
+<div class="code-window">
+<div class="code-header">
+<span class="code-file"><span class="code-dot"></span>gabriella.cy.js</span>
+<span class="code-tool">Cypress</span>
+</div>
+<div aria-label="Trecho de código Cypress testando o portfólio de Gabriella Maas" class="code-body" role="img">
+<div class="code-line l1"><span class="ln">01</span><code><span class="fn">describe</span>(<span class="str">'gabriella além do currículo'</span>, () =&gt; {</code></div>
+<div class="code-line l2"><span class="ln">02</span><code> <span class="fn">it</span>(<span class="str">'mostra mais do que cabe em um CV'</span>, () =&gt; {</code></div>
+<div class="code-line l3"><span class="ln">03</span><code> <span class="obj">cy</span>.<span class="fn">visit</span>(<span class="str">'gabriellamaas.com'</span>)</code></div>
+<div class="code-line l4"><span class="ln">04</span><code></code></div>
+<div class="code-line l5"><span class="ln">05</span><code> <span class="obj">cy</span>.<span class="fn">get</span>(<span class="str">'[data-testid="gabriella"]'</span>)</code></div>
+<div class="code-line l6"><span class="ln">06</span><code>      .<span class="fn">should</span>(<span class="str">'be.visible'</span>)</code></div>
+<div class="code-line l7"><span class="ln">07</span><code>      .<span class="fn">and</span>(<span class="str">'contain.text'</span>, <span class="str">'Quality Assurance'</span>)</code></div>
+<div class="code-line l8"><span class="ln">08</span><code></code></div>
+<div class="code-line l9"><span class="ln">09</span><code> <span class="obj">cy</span>.<span class="fn">get</span>(<span class="str">'[data-testid="qa-vision"]'</span>)</code></div>
+<div class="code-line l10"><span class="ln">10</span><code>      .<span class="fn">should</span>(<span class="str">'contain.text'</span>, <span class="str">'Contexto'</span>)</code></div>
+<div class="code-line l11"><span class="ln">11</span><code>      .<span class="fn">and</span>(<span class="str">'contain.text'</span>, <span class="str">'Risco'</span>)</code></div>
+<div class="code-line l12"><span class="ln">12</span><code>      .<span class="fn">and</span>(<span class="str">'contain.text'</span>, <span class="str">'Impacto'</span>)</code></div>
+<div class="code-line l13"><span class="ln">13</span><code></code></div>
+<div class="code-line l14"><span class="ln">14</span><code> <span class="obj">cy</span>.<span class="fn">get</span>(<span class="str">'[data-testid="trajectory"]'</span>)</code></div>
+<div class="code-line l15"><span class="ln">15</span><code>      .<span class="fn">should</span>(<span class="str">'not.be.empty'</span>)</code></div>
+<div class="code-line l16"><span class="ln">16</span><code></code></div>
+<div class="code-line l17"><span class="ln">17</span><code> <span class="obj">cy</span>.<span class="fn">contains</span>(<span class="str">'Além do QA'</span>).<span class="fn">click</span>()</code></div>
+<div class="code-line l18"><span class="ln">18</span><code></code></div>
+<div class="code-line l19"><span class="ln">19</span><code> <span class="obj">cy</span>.<span class="fn">get</span>(<span class="str">'[data-testid="beyond-resume"]'</span>)</code></div>
+<div class="code-line l20"><span class="ln">20</span><code>      .<span class="fn">should</span>(<span class="str">'be.visible'</span>)</code></div>
+<div class="code-line l21"><span class="ln">21</span><code></code></div>
+<div class="code-line l22"><span class="ln">22</span><code> <span class="obj">cy</span>.<span class="fn">contains</span>(<span class="str">'Vamos conversar?'</span>)</code></div>
+<div class="code-line l23"><span class="ln">23</span><code>      .<span class="fn">should</span>(<span class="str">'exist'</span>)</code></div>
+<div class="code-line l24"><span class="ln">24</span><code>  })</code></div>
+<div class="code-line l25"><span class="ln">25</span><code>})</code></div>
+</div>
+<div class="code-result"><span>✓</span> 1 passing <small>gabriella.cy.js</small></div>
+</div>
+</div>
+</section>
+<section class="section section-shell section-grid" id="sobre">
+<div class="section-heading reveal">
+<p class="section-index">01 — Sobre</p>
+<h2>Quem eu sou<br/>profissionalmente</h2>
+</div>
+<div class="section-content reveal">
+<p class="lead-text">Atuo com <strong class="purple">qualidade de software</strong> em produtos que exigem entendimento de regra de negócio, atenção a detalhes e visão do todo. Gosto de entrar cedo na conversa, ainda no refinamento, e acompanhar a entrega até a homologação.</p>
+<p>Meu trabalho mistura investigação e tradução. Um bug nem sempre nasce no ponto em que aparece: pode estar em uma integração, em um dado que mudou de significado ou em uma regra que não ficou clara. Por isso, entender o contexto é tão importante quanto executar o teste.</p>
+<blockquote class="about-statement">Produto, QA e Desenvolvimento não são etapas separadas. <strong>São partes do mesmo processo.</strong></blockquote>
+<p>Vejo QA como o braço direito de Produto e o braço esquerdo de Desenvolvimento. Meu papel é ajudar essas áreas a compartilhar contexto, enxergar riscos antes da entrega e reduzir incerteza sobre o que realmente precisa funcionar.</p>
+</div>
+</section>
+<section class="section section-shell" data-testid="qa-vision" id="visao">
+<div class="reveal">
+<p class="section-index">02 — Visão de qualidade</p>
+<h2 class="qa-question">A pergunta não é <span>“isso funciona?”</span><br/>É <strong>“se isso mudar, o que mais quebra?”</strong></h2>
+</div>
+<div class="qa-vision reveal">
+<div aria-label="Pilares da minha visão de QA" class="qa-tabs" role="tablist">
+<button aria-selected="true" class="qa-tab is-active" data-qa="contexto" role="tab"><span>01</span>Contexto <b>+</b></button>
+<button aria-selected="false" class="qa-tab" data-qa="risco" role="tab"><span>02</span>Risco <b>+</b></button>
+<button aria-selected="false" class="qa-tab" data-qa="impacto" role="tab"><span>03</span>Impacto <b>+</b></button>
+<button aria-selected="false" class="qa-tab" data-qa="investigacao" role="tab"><span>04</span>Investigação <b>+</b></button>
+<button aria-selected="false" class="qa-tab" data-qa="produto" role="tab"><span>05</span>Produto <b>+</b></button>
+<button aria-selected="false" class="qa-tab" data-qa="usuario" role="tab"><span>06</span>Usuário <b>+</b></button>
+</div>
+<div aria-live="polite" class="qa-panel" id="qaPanel">
+<p class="eyebrow accent" id="qaLabel">Contexto</p>
+<p id="qaText">Antes de testar, eu preciso entender para quem aquilo serve, qual problema está sendo resolvido e que decisão de negócio existe por trás da tela. Sem contexto, teste vira apenas conferência.</p>
+<small>Clique em um tópico para explorar.</small>
+</div>
+</div>
+</section>
+<section class="section section-shell" data-testid="trajectory" id="experiencia">
+<div class="reveal">
+<p class="section-index">03 — Trajetória</p>
+<h2>Como eu cheguei até aqui</h2>
+<p class="section-intro">Cada experiência mudou alguma coisa no meu jeito de pensar qualidade. Mais do que uma sequência de cargos, essa trajetória mostra como fui construindo minha visão de produto, processo, automação e impacto.</p>
+</div>
+<div class="timeline">
+<article class="timeline-item reveal">
+<div class="timeline-meta"><span>Out/2025 — atual</span><small>VR Software</small></div>
+<div class="timeline-body">
+<p class="chapter">Visão sistêmica</p>
+<h3>Quando análise de impacto virou parte central do meu jeito de testar</h3>
+<p>Hoje trabalho em um ERP web com regras de negócio e fluxos que se conectam o tempo todo. Participo de refinamentos com Produto e Desenvolvimento, questiono cenários antes da implementação e acompanho as entregas até a homologação.</p>
+<ul class="story-points">
+<li>Mapeio riscos e efeitos colaterais entre telas, módulos e fluxos relacionados.</li>
+<li>Crio cenários positivos, negativos e regressivos a partir de critérios de aceite e regras condicionais.</li>
+<li>Uso API e automação como apoio à validação funcional quando elas agregam profundidade ao teste.</li>
+</ul>
+<div class="skill-groups">
+<div><span class="skill-group-title">Hard skills</span><div class="skill-row">
+<span class="tool"><img alt="" src="assets/icons/postman.png"/>Postman</span>
+<span class="tool"><img alt="" src="assets/icons/cypress.png"/>Cypress</span>
+<span class="tool"><img alt="" src="assets/icons/javascript.png"/>JavaScript</span>
+<span class="tool"><img alt="" src="assets/icons/jira.png"/>Jira</span>
+<span class="tool"><img alt="" src="assets/icons/azuredevops.png"/>Azure DevOps</span>
+<span class="tool"><img alt="" src="assets/icons/docker.png"/>Docker</span>
+</div></div>
+</div>
+</div>
+</article>
+<article class="timeline-item reveal">
+<div class="timeline-meta"><span>Mar/2025 — Ago/2025</span><small>ForLogic</small></div>
+<div class="timeline-body">
+<p class="chapter">Consolidando processo</p>
+<h3>Transformar requisito em comportamento testável</h3>
+<p>Na ForLogic aprofundei a rotina de testes funcionais e regressivos em aplicações web. O foco estava em entender o comportamento esperado, transformar critérios de aceite em cenários claros e acompanhar releases com atenção ao que poderia escapar para o usuário.</p>
+<ul class="story-points">
+<li>Criação, revisão e manutenção de casos de teste com foco em cenários críticos e alternativos.</li>
+<li>Acompanhamento de releases e homologações para encontrar inconsistências antes da entrega.</li>
+<li>Priorização de regressão a partir do risco, e não apenas da quantidade de cenários disponíveis.</li>
+</ul>
+<div class="skill-groups">
+<div class="experience-practice"><span class="skill-group-title">Prática</span><p>Testes funcionais · regressão · critérios de aceite · homologação</p></div>
+</div>
+</div>
+</article>
+<article class="timeline-item reveal">
+<div class="timeline-meta"><span>Jun/2024 — Dez/2024</span><small>Aliare</small></div>
+<div class="timeline-body">
+<p class="chapter">Mergulho em automação</p>
+<h3>Onde aprofundei automação e entendi os limites dela sozinha</h3>
+<p>Foi uma experiência profissional focada em testes automatizados. Trabalhei com Cypress, JavaScript e Git/GitFlow na construção e manutenção de cenários E2E. O aprendizado técnico foi enorme, mas o principal aprendizado veio justamente do limite da ferramenta: automação sozinha não cria qualidade.</p>
+<ul class="story-points">
+<li>Estruturei cenários E2E voltados para regressão de fluxos de maior impacto.</li>
+<li>Passei a pensar mais em arquitetura, reutilização e manutenção para que a suíte continuasse confiável.</li>
+<li>Entendi na prática que um teste automatizado bom nasce de uma prioridade bem definida antes do código.</li>
+</ul>
+<div class="skill-groups">
+<div><span class="skill-group-title">Hard skills</span><div class="skill-row">
+<span class="tool"><img alt="" src="assets/icons/cypress.png"/>Cypress</span>
+<span class="tool"><img alt="" src="assets/icons/javascript.png"/>JavaScript</span>
+<span class="tool"><img alt="" src="assets/icons/git.png"/>Git / GitFlow</span>
+<span class="tool"><img alt="" src="assets/icons/github.png"/>GitHub</span>
+<span class="tool">POM</span>
+</div></div>
+</div>
+</div>
+</article>
+<article class="timeline-item reveal">
+<div class="timeline-meta"><span>Ago/2022 — Jun/2024</span><small>AdGrowth</small></div>
+<div class="timeline-body">
+<p class="chapter">Onde tudo começou</p>
+<h3>Meu primeiro emprego em tecnologia já foi em QA</h3>
+<p>Comecei em QA aprendendo o produto ao mesmo tempo em que aprendia a testar. Trabalhei com testes manuais, funcionais, exploratórios, automação e validação de APIs, além de participar das cerimônias e alinhamentos do time.</p>
+<ul class="story-points">
+<li>Transformava requisitos e regras de negócio em cenários principais, alternativos e regressivos.</li>
+<li>Validava APIs no Postman para entender o comportamento além da interface.</li>
+<li>Aprendi cedo que um bug bem comunicado ajuda tanto quanto um bug bem encontrado.</li>
+</ul>
+<div class="skill-groups">
+<div><span class="skill-group-title">Hard skills</span><div class="skill-row">
+<span class="tool"><img alt="" src="assets/icons/postman.png"/>Postman</span>
+<span class="tool"><img alt="" src="assets/icons/git.png"/>Git</span>
+<span class="tool"><img alt="" src="assets/icons/cypress.png"/>Cypress</span>
+</div></div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section class="section section-shell" id="processo">
+<div class="reveal">
+<p class="section-index">04 — Como eu trabalho</p>
+<h2>Sete movimentos, quase sempre nessa ordem</h2>
+</div>
+<div class="process reveal">
+<div aria-label="Etapas do meu processo de QA" class="process-tabs" role="tablist">
+<button class="process-tab is-active" data-stage="0"><span>01</span>Entender</button>
+<button class="process-tab" data-stage="1"><span>02</span>Questionar</button>
+<button class="process-tab" data-stage="2"><span>03</span>Mapear riscos</button>
+<button class="process-tab" data-stage="3"><span>04</span>Testar</button>
+<button class="process-tab" data-stage="4"><span>05</span>Investigar</button>
+<button class="process-tab" data-stage="5"><span>06</span>Comunicar</button>
+<button class="process-tab" data-stage="6"><span>07</span>Aprender</button>
+</div>
+<p class="process-text" id="processText">Leio a regra de negócio, converso com Produto e desenho o caminho que o dado vai percorrer. Se eu não consigo explicar a feature, ainda não entendi o suficiente para testá-la.</p>
+</div>
+</section>
+<section class="section section-shell" id="projetos">
+<div class="reveal">
+<p class="section-index">05 — Na prática</p>
+<h2>Alguns problemas que me ajudaram a construir essa visão</h2>
+<p class="section-intro">Casos baseados em experiências reais, resumidos pelo raciocínio e sem dados sensíveis de empresas ou clientes.</p>
+</div>
+<div class="featured-cases">
+<article class="featured-case atlas-case reveal">
+<div class="featured-case-intro">
+<span class="case-kicker">Iniciativa · análise de impacto</span>
+<h3>VR Atlas</h3>
+<p class="case-lead">Uma iniciativa que nasceu de um problema real: como tornar relações, dependências e impactos dentro de um ERP mais visíveis e fáceis de consultar?</p>
+<p>A proposta é organizar contexto para enxergar além da tela alterada e apoiar decisões de teste com uma visão mais conectada do produto.</p>
+</div>
+<div aria-label="Objetivos do VR Atlas" class="case-outcomes">
+<div><span>01</span><p><strong>Visualizar dependências</strong><br/>Conectar fluxos, regras e pontos que podem ser afetados por uma mudança.</p></div>
+<div><span>02</span><p><strong>Apoiar análise de impacto</strong><br/>Tornar risco e alcance mais fáceis de discutir antes da implementação.</p></div>
+<div><span>03</span><p><strong>Melhorar refinamento e regressão</strong><br/>Usar contexto para fazer perguntas melhores e definir um escopo de teste mais consciente.</p></div>
+</div>
+</article>
+<article class="featured-case automation-case reveal">
+<div class="featured-case-intro">
+<span class="case-kicker">Automação de testes</span>
+<h3>Automação não começa no código.</h3>
+<p>Ter trabalhado em uma experiência focada em automação me deu uma base técnica importante e reforçou uma convicção: automatizar só faz sentido quando o time já sabe o que precisa proteger e por quê.</p>
+</div>
+<div aria-label="Fluxo antes da automação" class="automation-flow">
+<span>Entendimento</span><b aria-hidden="true">→</b><span>Risco</span><b aria-hidden="true">→</b><span>Prioridade</span><b aria-hidden="true">→</b><span>Cenário</span><b aria-hidden="true">→</b><span>Automação</span>
+</div>
+<div class="automation-note">
+<p>Hoje continuo aprofundando Cypress, JavaScript e arquitetura de testes, mas dentro de um processo maior de QA. A automação é indispensável para mim; só não é o ponto de partida.</p>
+<div class="project-tools"><span class="tool"><img alt="" src="assets/icons/cypress.png"/>Cypress</span><span class="tool"><img alt="" src="assets/icons/javascript.png"/>JavaScript</span><span class="tool"><img alt="" src="assets/icons/git.png"/>Git</span></div>
+</div>
+</article>
+</div>
+<div class="project-list compact-projects">
+<article class="project reveal">
+<button aria-expanded="false" class="project-toggle">
+<span><small>Testes de API</small><strong>Validar o que a tela não mostra</strong></span><b>+</b>
+</button>
+<div class="project-content">
+<p>Quando a interface mostra apenas o sintoma, testar a API ajuda a chegar mais perto da origem e transforma a conversa técnica em evidência.</p>
+<ul>
+<li>Validação de contratos, campos obrigatórios, permissões e respostas de erro.</li>
+<li>Comparação entre comportamento esperado e retorno real do serviço.</li>
+<li>Uso do Postman para separar problemas de interface, integração e regra de negócio.</li>
+</ul>
+<div class="project-tools"><span class="tool"><img alt="" src="assets/icons/postman.png"/>Postman</span><span class="tool">JSON</span><span class="tool">REST</span></div>
+</div>
+</article>
+<article class="project reveal">
+<button aria-expanded="false" class="project-toggle">
+<span><small>Processo de qualidade</small><strong>Qualidade que começa no refinamento</strong></span><b>+</b>
+</button>
+<div class="project-content">
+<p>Quanto mais cedo uma dúvida aparece, mais barata ela é de resolver. Por isso gosto de participar do refinamento e transformar ambiguidades em perguntas que o time consegue responder antes de desenvolver.</p>
+<ul>
+<li>Cenários negativos e alternativos entram na conversa antes da tela existir.</li>
+<li>Critérios de aceite precisam ser verificáveis e ligados à regra de negócio.</li>
+<li>Produto, QA e Desenvolvimento dividem contexto e reduzem retrabalho juntos.</li>
+</ul>
+</div>
+</article>
+</div>
+</section>
+<section class="section section-shell learning-section" id="aprendizado">
+<div class="learning-intro reveal">
+<p class="section-index">06 — Aprendizado contínuo</p>
+<h2>Tecnologia não para. Eu também não posso parar.</h2>
+<p>Não gosto de tratar estudo como uma lista de cursos concluídos. Tento conectar o que estou aprendendo a problemas reais: algo que quero testar melhor, uma dúvida técnica ou uma forma mais eficiente de trabalhar.</p>
+<div aria-label="Focos atuais de aprendizado" class="learning-focus">
+<div><span>01</span><strong>IA + QA</strong><p>Usar IA para ampliar análise, apoiar investigação e reduzir tarefas repetitivas sem terceirizar pensamento crítico.</p></div>
+<div><span>02</span><strong>Arquitetura e integrações</strong><p>Entender melhor o caminho dos dados e o que acontece além da interface.</p></div>
+<div><span>03</span><strong>Análise de impacto</strong><p>Aprimorar formas de enxergar dependências e definir regressão com mais contexto.</p></div>
+<div><span>04</span><strong>Melhoria de processo</strong><p>Aproximar QA de Produto e Desenvolvimento para prevenir problemas antes do teste.</p></div>
+</div>
+</div>
+<div class="education reveal">
+<div class="education-card education-primary">
+<span class="education-year">2023 — 2026</span>
+<h3>Análise e Desenvolvimento de Sistemas</h3>
+<p class="education-place">Univel Centro Universitário</p>
+<p>A graduação ampliou minha visão para além do teste. Desenvolvimento, APIs, banco de dados, engenharia de software e modelagem de sistemas me ajudam a conversar melhor com quem constrói e a entender o caminho que uma informação percorre antes de chegar à interface.</p>
+<div class="education-qa">
+<span>O que desenvolvimento acrescentou ao meu QA</span>
+<ul>
+<li>Entender melhor como os dados circulam entre interface, API e banco.</li>
+<li>Conversar com Desenvolvimento com mais contexto técnico.</li>
+<li>Investigar comportamento além do que aparece na tela.</li>
+<li>Enxergar regras, integrações e arquitetura como parte do teste.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="section section-shell beyond-section" data-testid="beyond-resume" id="alem">
+<button aria-controls="beyondContent" aria-expanded="false" class="beyond-trigger reveal" id="beyondTrigger" type="button"><span class="section-index">07 — Além do QA</span><span class="beyond-trigger-row"><span class="beyond-trigger-title">Quem é a Gabriella quando desliga o computador?</span><span aria-hidden="true" class="beyond-trigger-icon">+</span></span></button><div aria-hidden="true" class="beyond-content" id="beyondContent"><div class="beyond-content-inner"><div class="beyond-diary reveal">
+<div class="diary-stage" id="diaryStage">
+<article class="diary-page is-active" data-page="0">
+<div class="diary-photo"><img alt="Retrato de Gabriella em área externa" src="assets/gabriella-retrato-1.jpg"/></div>
+<div class="diary-copy">
+<p>Cresci no interior do Paraná e sou a mais nova de três irmãos. A tecnologia entrou cedo no meu repertório muito por influência da minha família, antes mesmo de eu imaginar isso como carreira.</p>
+<p>Talvez por isso eu goste tanto de entender como as coisas funcionam. Esse impulso de observar, desmontar e ligar pontos aparece na Gabriella profissional, mas começou muito antes do Jira.</p>
+</div>
+</article>
+<article class="diary-page" data-page="1">
+<div class="diary-photo"><img alt="Gabriella segurando um bolo de aniversário" src="assets/gabriella-retrato-2.jpg"/></div>
+<div class="diary-copy">
+<p>Antes de entrar em QA, fui olhar para UI/UX. Não fiquei nesse caminho, mas ele deixou uma marca importante: até hoje eu tento enxergar produto também pelo lado de quem usa.</p>
+<p>Meu primeiro emprego em tecnologia já foi como QA, então aprendi a profissão e o contexto de produto ao mesmo tempo. Talvez por isso eu tenha desenvolvido cedo esse olhar que mistura comportamento, regra e experiência do usuário.</p>
+</div>
+</article>
+<article class="diary-page" data-page="2">
+<div class="diary-photo"><img alt="Notebook com The Sims 4 aberto" class="sims-photo" src="assets/jogandothesims.jpeg"/></div>
+<div class="diary-copy">
+<p>The Big Bang Theory é minha série favorita, e eu gosto muito de sitcoms em geral.</p>
+<p>Também gosto de filmes de ficção científica, fantasia, universos distópicos e filmes com fatos históricos.</p>
+</div>
+</article>
+<article class="diary-page" data-page="3">
+<div class="diary-photo"><img alt="Jade ao lado do computador" src="assets/jade1.jpeg"/></div>
+<div class="diary-copy">
+<p>A Jade é minha estagiária não remunerada (a não ser que sachê e ração premium contem como pagamento)<br/><br/>Ela me faz companhia durante as intermináveis reuniões de daily, alinhamentos, plannings e retrospectivas.</p>
+<p>Ela é muito amada por aqui e virou minha companhia diária, daquelas presenças que deixam a rotina mais leve, mais carinhosa e muito mais minha.</p>
+</div>
+</article>
+<article class="diary-page" data-page="4">
+<div class="diary-photo"><img alt="Desenho de cerejas em um caderno" src="assets/desenhando.jpeg"/></div>
+<div class="diary-copy">
+<p>Tenho um lado artístico e criativo bem presente. Gosto de desenhar, pintar e de hobbies manuais em geral, especialmente quando eles me colocam naquele estado de atenção calma em que o tempo passa sem pressa.</p>
+<p>É um tipo de criatividade diferente da do trabalho, mas que conversa muito com ela: observação, detalhe, composição e sensibilidade para perceber o que ainda não está pronto.</p>
+</div>
+</article>
+<article class="diary-page" data-page="5">
+<div class="diary-photo"><img alt="Peças de quebra-cabeça sobre uma mesa" src="assets/quebracabeca.jpeg"/></div>
+<div class="diary-copy">
+<p>Quebra-cabeça é provavelmente o hobby que mais traduz a minha mente inquieta. Eu perco horas montando, separando peças e procurando novos para comprar.</p>
+<p>Quando termino, gosto de transformar alguns em decoração. Tem algo muito satisfatório em pegar um monte de fragmentos soltos e ver tudo fazer sentido no final.</p>
+</div>
+</article>
+<article class="diary-page" data-page="6">
+<div class="diary-photo"><img alt="Disco de vinil sobre uma vitrola" src="assets/musica.jpeg"/></div>
+<div class="diary-copy">
+<p>Meu gosto musical é bem diverso e, nos últimos tempos, isso ganhou outro formato: comecei a colecionar discos de vinil.</p>
+<p>Gosto do ritual de escolher um álbum, colocar para tocar e transformar a música em um momento mais presente. É quase o oposto da pressa do dia, e talvez por isso eu tenha gostado tanto.</p>
+</div>
+</article>
+</div>
+<div aria-label="Navegação entre páginas pessoais" class="diary-controls">
+<button aria-label="Página anterior" class="diary-nav" id="prevDiary" type="button">←</button>
+<div aria-label="Selecionar página" class="diary-dots" id="diaryDots"></div>
+<button aria-label="Próxima página" class="diary-nav" id="nextDiary" type="button">→</button>
+</div>
+</div></div></div></section>
+<section class="section section-shell contact-section" id="contato">
+<span class="sr-only">Vamos conversar?</span>
+<div class="reveal">
+<p class="section-index">08 — Contato</p>
+<h2>Se meu jeito de pensar em Qualidade fizer sentido para o seu time, vamos conversar.</h2>
+<p>Estou aberta a conversas sobre oportunidades, qualidade de produto, processos e desafios em que QA possa ajudar a reduzir incerteza e melhorar a entrega.</p>
+<div class="hero-actions">
+<a class="button button-primary" href="mailto:gabriellamaas26@gmail.com">Enviar um e-mail <span aria-hidden="true">→</span></a>
+<a class="button button-secondary" href="https://www.linkedin.com/in/gabriella-maas/" rel="noopener" target="_blank">LinkedIn</a>
+<a class="button button-secondary" download="" href="assets/Curriculo-Gabriella-Maas-QA.pdf">Baixar currículo</a>
+</div>
+<footer class="footer-links">
+<div>
+<a href="https://www.linkedin.com/in/gabriella-maas/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://github.com/gabriellamaas" rel="noopener" target="_blank">GitHub</a>
+<a href="mailto:gabriellamaas26@gmail.com">E-mail</a>
+</div>
+<span>GABRIELLA MAAS · 2026</span>
+</footer>
+</div>
+</section>
+</main>
+<script src="app.js"></script><script src="i18n.js"></script>
+</body>
+</html>
