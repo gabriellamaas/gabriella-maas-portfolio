@@ -1,280 +1,248 @@
-const qaContent = {
-  contexto: {
-    label: 'Contexto',
-    text: 'Antes de testar, eu preciso entender para quem aquilo serve, qual problema está sendo resolvido e que decisão de negócio existe por trás da tela. Sem contexto, teste vira apenas conferência.'
-  },
-  risco: {
-    label: 'Risco',
-    text: 'Nem tudo merece o mesmo esforço. Eu priorizo pelo que pode causar mais impacto se falhar: regra sensível, fluxo financeiro, integração, permissão ou dado difícil de corrigir depois.'
-  },
-  impacto: {
-    label: 'Impacto',
-    text: 'Toda mudança tem um raio de alcance. Meu trabalho é entender até onde ela pode chegar: telas relacionadas, módulos vizinhos, relatórios, rotinas e integrações que dependem do mesmo dado.'
-  },
-  investigacao: {
-    label: 'Investigação',
-    text: 'Reproduzir um bug é só uma parte. Eu gosto de isolar dado, regra, ambiente e caminho para entender em que condição ele acontece e o que isso revela sobre o sistema.'
-  },
-  produto: {
-    label: 'Produto',
-    text: 'Qualidade não é apenas ausência de erro. A feature também precisa resolver o problema certo. Quando funciona tecnicamente, mas não atende a necessidade do usuário ou do negócio, ainda existe um problema de qualidade.'
-  },
-  usuario: {
-    label: 'Usuário',
-    text: 'A pessoa do outro lado nem sempre usa o sistema como o fluxo foi desenhado. Usabilidade, atalhos, pressa, contexto e dados imperfeitos também fazem parte do teste.'
-  }
-}
+// scroll progress
+    const progress = document.getElementById('progress');
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      progress.style.width = (max ? (h.scrollTop / max) * 100 : 0) + '%';
+    };
+    addEventListener('scroll', updateProgress, {passive:true});
+    updateProgress();
 
-const processTexts = [
-  'Leio a regra de negócio, converso com Produto e desenho o caminho que o dado vai percorrer. Se eu não consigo explicar a feature, ainda não entendi o suficiente para testá-la.',
-  'Faço as perguntas que podem mudar o entendimento da história: e se o campo vier vazio? e se o registro já existir? quem usa esse dado depois? que comportamento esperamos em uma exceção?',
-  'Separo o que é crítico do que tem menor impacto. Riscos altos recebem uma análise mais aprofundada e cenários negativos; riscos baixos passam por uma verificação mais rápida.',
-  'Funcional, exploratório, regressão, E2E ou API. A técnica vem depois da pergunta que preciso responder e do risco que preciso cobrir.',
-  'Quando algo falha, tento não parar no sintoma. Isolo dados, ambiente e passos para chegar mais perto da causa e abrir o bug com contexto suficiente para ajudar a investigação.',
-  'Um bug bem escrito economiza tempo do time. Registro evidência, comportamento esperado, comportamento obtido, impacto e o que já consegui descartar durante a análise.',
-  'Depois da entrega, o que escapou vira aprendizado: cenário de regressão, nova pergunta para o refinamento ou uma mudança no processo para reduzir a chance de repetir o mesmo problema.'
-]
+    // mobile nav
+    const menu = document.getElementById('menu');
+    const nav = document.getElementById('nav');
+    menu.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menu.setAttribute('aria-expanded','false');
+    }));
 
-const header = document.getElementById('siteHeader')
-const progress = document.getElementById('scrollProgress')
-const menuToggle = document.getElementById('menuToggle')
-const mainNav = document.getElementById('mainNav')
+    // QA vision
+    const visionData = {
+      contexto: ['Contexto','Antes de testar, preciso entender para quem aquilo serve, qual problema está sendo resolvido e que decisão de negócio existe por trás da tela. Sem contexto, teste vira apenas conferência.'],
+      risco: ['Risco','Nem todo cenário merece a mesma profundidade. Priorizo o que pode gerar maior impacto para o negócio, para o usuário e para fluxos que sustentam a entrega.'],
+      impacto: ['Impacto','Uma alteração raramente termina na tela em que foi feita. Procuro relações, dependências e efeitos colaterais para definir uma regressão que faça sentido.'],
+      investigacao: ['Investigação','Quando o comportamento não fecha, sigo o dado. Interface, request, response, regra e integração ajudam a transformar suspeita em evidência.'],
+      produto: ['Produto','Qualidade melhora quando QA participa das decisões cedo. Refinamento é um espaço para remover ambiguidade e tornar comportamento esperado mais claro antes do desenvolvimento.'],
+      usuario: ['Usuário','A regra pode estar tecnicamente correta e ainda gerar uma experiência ruim. O teste precisa proteger também o caminho de quem usa o produto.']
+    };
+    const visionLabel = document.getElementById('visionLabel');
+    const visionText = document.getElementById('visionText');
+    document.querySelectorAll('.vision-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.vision-tab').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+        const [label,text] = qaVisionByLang[currentLang][btn.dataset.key];
+        visionLabel.textContent = label;
+        visionText.textContent = text;
+        if(!reducedMotion && visionText.animate){
+          visionText.animate([{opacity:.2,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:320,easing:'ease-out'});
+        }
+      });
+    });
 
-function updateScroll() {
-  const root = document.documentElement
-  const max = Math.max(1, root.scrollHeight - root.clientHeight)
-  const ratio = Math.min(1, root.scrollTop / max)
-  progress.style.width = `${ratio * 100}%`
-  header.classList.toggle('is-compact', root.scrollTop > 70)
-}
+    // process
+    const processTexts = [
+      'Leio a regra de negócio, converso com Produto e desenho o caminho que o dado percorre. Se eu não consigo explicar a feature, ainda não entendi o suficiente para testá-la.',
+      'Procuro ambiguidades, condicionais, exceções e decisões que ainda não estão claras. Uma boa pergunta no refinamento pode evitar vários bugs depois.',
+      'Separo o essencial do acessório e busco efeitos colaterais. Risco alto recebe profundidade e cenário negativo; risco baixo recebe uma verificação proporcional.',
+      'Executo cenários principais, alternativos, negativos e regressivos priorizados pelo risco. Ferramenta é meio, não objetivo.',
+      'Quando algo falha, tento ir além da tela: dados, API, integração e contexto ajudam a localizar a origem e produzir evidência melhor.',
+      'Registro o suficiente para outra pessoa entender comportamento, impacto, evidência e condição de reprodução sem precisar reconstruir toda a investigação.'
+    ];
+    const processCopy = document.getElementById('processCopy');
+    document.querySelectorAll('.step').forEach((btn,i) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.step').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+        processCopy.textContent = processByLang[currentLang][i];
+        if(!reducedMotion && processCopy.animate){
+          processCopy.animate([{opacity:.2,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:320,easing:'ease-out'});
+        }
+      });
+    });
 
-window.addEventListener('scroll', updateScroll, { passive: true })
-updateScroll()
+    // motion — preserve the original portfolio feel (scroll reveal + Cypress typing)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-menuToggle.addEventListener('click', () => {
-  const open = menuToggle.getAttribute('aria-expanded') === 'true'
-  menuToggle.setAttribute('aria-expanded', String(!open))
-  mainNav.classList.toggle('is-open', !open)
-})
+    const revealTargets = [...document.querySelectorAll('.reveal')];
+    if(reducedMotion || !('IntersectionObserver' in window)){
+      revealTargets.forEach(el => el.classList.add('is-visible'));
+    } else {
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.08, rootMargin:'0px 0px -8% 0px'});
+      revealTargets.forEach(el => revealObserver.observe(el));
+    }
 
-mainNav.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    menuToggle.setAttribute('aria-expanded', 'false')
-    mainNav.classList.remove('is-open')
-  })
-})
+    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    let heroCodeTypingVersion = 0;
+    let heroCodeRestore = null;
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-const reveals = document.querySelectorAll('.reveal')
-if (reducedMotion || !('IntersectionObserver' in window)) {
-  reveals.forEach(el => el.classList.add('is-visible'))
-} else {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible')
-        observer.unobserve(entry.target)
+    function cancelHeroCodeTyping(){
+      heroCodeTypingVersion += 1;
+      if(heroCodeRestore) heroCodeRestore();
+      heroCodeRestore = null;
+      const codeWindow = document.querySelector('.code-window');
+      if(codeWindow){
+        codeWindow.classList.remove('is-typing');
+        codeWindow.querySelectorAll('.code-line').forEach(line => line.classList.remove('is-visible','is-typing','is-empty'));
+        codeWindow.querySelector('.code-pass')?.classList.remove('is-visible','is-typing');
       }
-    })
-  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' })
-  reveals.forEach(el => observer.observe(el))
-}
-
-const qaTabs = [...document.querySelectorAll('.qa-tab')]
-const qaLabel = document.getElementById('qaLabel')
-const qaText = document.getElementById('qaText')
-qaTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    qaTabs.forEach(item => {
-      item.classList.remove('is-active')
-      item.setAttribute('aria-selected', 'false')
-    })
-    tab.classList.add('is-active')
-    tab.setAttribute('aria-selected', 'true')
-    const data = qaContent[tab.dataset.qa]
-    qaLabel.textContent = data.label
-    qaText.animate([{ opacity: .2, transform: 'translateY(5px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: reducedMotion ? 0 : 320, easing: 'ease-out' })
-    qaText.textContent = data.text
-  })
-})
-
-const processTabs = [...document.querySelectorAll('.process-tab')]
-const processText = document.getElementById('processText')
-processTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    processTabs.forEach(item => item.classList.remove('is-active'))
-    tab.classList.add('is-active')
-    const index = Number(tab.dataset.stage)
-    processText.textContent = processTexts[index]
-    processText.animate([{ opacity: .2, transform: 'translateY(5px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: reducedMotion ? 0 : 320, easing: 'ease-out' })
-  })
-})
-
-const projects = [...document.querySelectorAll('.project')]
-projects.forEach(project => {
-  const button = project.querySelector('.project-toggle')
-  button.addEventListener('click', () => {
-    const open = project.classList.toggle('is-open')
-    button.setAttribute('aria-expanded', String(open))
-  })
-})
-
-const diaryPages = [...document.querySelectorAll('.diary-page')]
-const diaryDotsWrap = document.getElementById('diaryDots')
-const prevDiary = document.getElementById('prevDiary')
-const nextDiary = document.getElementById('nextDiary')
-const diaryStage = document.getElementById('diaryStage')
-let currentDiaryPage = 0
-let diaryTouchStartX = null
-
-function buildDiaryDots() {
-  if (!diaryDotsWrap || !diaryPages.length) return
-  diaryDotsWrap.innerHTML = ''
-  diaryPages.forEach((_, index) => {
-    const dot = document.createElement('button')
-    dot.className = `diary-dot${index === 0 ? ' is-active' : ''}`
-    dot.setAttribute('aria-label', `Mostrar página ${index + 1}`)
-    dot.addEventListener('click', () => showDiaryPage(index))
-    diaryDotsWrap.appendChild(dot)
-  })
-}
-
-function showDiaryPage(index) {
-  if (!diaryPages.length) return
-  currentDiaryPage = (index + diaryPages.length) % diaryPages.length
-  diaryPages.forEach((page, pageIndex) => page.classList.toggle('is-active', pageIndex === currentDiaryPage))
-  if (diaryDotsWrap) [...diaryDotsWrap.children].forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === currentDiaryPage))
-}
-
-const beyondSection = document.getElementById('alem')
-const beyondTrigger = document.getElementById('beyondTrigger')
-const beyondContent = document.getElementById('beyondContent')
-
-if (beyondTrigger && beyondSection && beyondContent) {
-  beyondTrigger.addEventListener('click', () => {
-    const open = beyondSection.classList.toggle('is-open')
-    beyondTrigger.setAttribute('aria-expanded', String(open))
-    beyondContent.setAttribute('aria-hidden', String(!open))
-    if (open) showDiaryPage(currentDiaryPage)
-  })
-}
-
-if (prevDiary) prevDiary.addEventListener('click', () => showDiaryPage(currentDiaryPage - 1))
-if (nextDiary) nextDiary.addEventListener('click', () => showDiaryPage(currentDiaryPage + 1))
-
-if (diaryStage) {
-  diaryStage.addEventListener('touchstart', event => {
-    diaryTouchStartX = event.touches[0].clientX
-  }, { passive: true })
-  diaryStage.addEventListener('touchend', event => {
-    if (diaryTouchStartX === null) return
-    const endX = event.changedTouches[0].clientX
-    const delta = endX - diaryTouchStartX
-    if (Math.abs(delta) > 45) showDiaryPage(currentDiaryPage + (delta < 0 ? 1 : -1))
-    diaryTouchStartX = null
-  }, { passive: true })
-}
-
-buildDiaryDots()
-showDiaryPage(0)
-
-
-function getCodeSegments(codeEl) {
-  return [...codeEl.childNodes].map(node => {
-    if (node.nodeType === Node.TEXT_NODE) {
-      return { text: node.textContent.replace(/ /g, ' ') }
-    }
-    return { text: node.textContent.replace(/ /g, ' '), className: node.className || '' }
-  })
-}
-
-function appendCharacter(target, char) {
-  if (target.nodeType === Node.TEXT_NODE) target.textContent += char
-  else target.textContent += char
-}
-
-function wait(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-let codeTypingVersion = 0
-function cancelHeroCodeTyping() { codeTypingVersion += 1 }
-
-async function typeIntoCode(codeEl, segments, speed, version) {
-  codeEl.innerHTML = ''
-  for (const segment of segments) {
-    const target = segment.className
-      ? Object.assign(document.createElement('span'), { className: segment.className })
-      : document.createTextNode('')
-
-    codeEl.appendChild(target)
-
-    for (const char of segment.text) {
-      if (version !== codeTypingVersion) return false
-      appendCharacter(target, char)
-      await wait(speed)
-    }
-  }
-  return version === codeTypingVersion
-}
-
-async function startHeroCodeTyping() {
-  const codeWindow = document.querySelector('.code-window')
-  if (!codeWindow || codeWindow.dataset.typed === 'true' || reducedMotion) return
-  const version = ++codeTypingVersion
-
-  const lines = [...codeWindow.querySelectorAll('.code-line')]
-  const result = codeWindow.querySelector('.code-result')
-  const resultLabel = result ? result.querySelector('small') : null
-  if (result && !result.querySelector('.code-result-text')) {
-    const textNode = [...result.childNodes].find(node => node.nodeType === Node.TEXT_NODE)
-    const typed = document.createElement('span')
-    typed.className = 'code-result-text'
-    typed.textContent = textNode ? textNode.textContent.trim() : '1 passing'
-    if (textNode) result.replaceChild(typed, textNode)
-    else if (resultLabel) result.insertBefore(typed, resultLabel)
-  }
-  const resultText = result ? result.querySelector('.code-result-text') : null
-
-  const lineData = lines.map(line => {
-    const code = line.querySelector('code')
-    return { line, code, segments: getCodeSegments(code), isEmpty: code.textContent.trim().length === 0 }
-  })
-
-  codeWindow.classList.add('is-typing')
-  codeWindow.dataset.typed = 'true'
-
-  for (const item of lineData) {
-    item.line.classList.add('is-visible')
-    if (item.isEmpty) {
-      item.line.classList.add('is-empty')
-      await wait(45)
-      continue
     }
 
-    item.line.classList.add('is-typing')
-    const chars = item.segments.reduce((sum, seg) => sum + seg.text.length, 0)
-    const speed = chars > 62 ? 5 : chars > 36 ? 7 : 9
-    const completed = await typeIntoCode(item.code, item.segments, speed, version)
-    if (!completed || version !== codeTypingVersion) return
-    item.line.classList.remove('is-typing')
-    await wait(25)
-  }
+    async function startHeroCodeTyping(){
+      const codeWindow = document.querySelector('.code-window');
+      if(!codeWindow || reducedMotion || codeWindow.dataset.typed === 'true') return;
+      const version = ++heroCodeTypingVersion;
+      const lines = [...codeWindow.querySelectorAll('.code-line')];
+      const pass = codeWindow.querySelector('.code-pass');
+      const state = lines.map(line => {
+        const textEl = line.querySelector('.code-text');
+        return {line, textEl, html:textEl.innerHTML, text:textEl.textContent};
+      });
+      const passHtml = pass?.innerHTML || '';
+      const passText = pass?.textContent || '';
 
-  if (result && resultText) {
-    const finalText = resultText.textContent
-    result.classList.add('is-visible', 'is-typing')
-    resultText.textContent = ''
-    for (const char of finalText) {
-      if (version !== codeTypingVersion) return
-      resultText.textContent += char
-      await wait(18)
+      heroCodeRestore = () => {
+        state.forEach(item => { item.textEl.innerHTML = item.html; });
+        if(pass) pass.innerHTML = passHtml;
+      };
+
+      codeWindow.dataset.typed = 'true';
+      codeWindow.classList.add('is-typing');
+      lines.forEach(line => line.classList.remove('is-visible','is-typing','is-empty'));
+      if(pass) pass.classList.remove('is-visible','is-typing');
+
+      for(const item of state){
+        if(version !== heroCodeTypingVersion) return;
+        item.line.classList.add('is-visible');
+        item.textEl.textContent = '';
+        if(!item.text.trim()){
+          item.line.classList.add('is-empty');
+          await wait(38);
+          item.textEl.innerHTML = item.html;
+          continue;
+        }
+        item.line.classList.add('is-typing');
+        const speed = item.text.length > 62 ? 4 : item.text.length > 36 ? 6 : 8;
+        for(const char of item.text){
+          if(version !== heroCodeTypingVersion) return;
+          item.textEl.textContent += char;
+          await wait(speed);
+        }
+        item.textEl.innerHTML = item.html;
+        item.line.classList.remove('is-typing');
+        await wait(22);
+      }
+
+      if(pass){
+        pass.classList.add('is-visible','is-typing');
+        pass.textContent = '';
+        for(const char of passText){
+          if(version !== heroCodeTypingVersion) return;
+          pass.textContent += char;
+          await wait(16);
+        }
+        pass.innerHTML = passHtml;
+        pass.classList.remove('is-typing');
+      }
+      codeWindow.classList.remove('is-typing');
+      heroCodeRestore = null;
     }
-    result.classList.remove('is-typing')
-  }
-}
 
-window.addEventListener('load', () => {
-  if (reducedMotion) return
-  setTimeout(startHeroCodeTyping, 250)
-})
+    window.addEventListener('load', () => {
+      if(!reducedMotion) setTimeout(startHeroCodeTyping, 250);
+    });
+
+    // theme switcher — mantém a escolha entre visitas
+    const themeToggle = document.getElementById('themeToggle');
+    const restorePersonalStars = () => {
+      document.querySelectorAll('.personal-card strong').forEach(el => {
+        const text = el.textContent.trim();
+        if(text.startsWith('✦')){
+          const label = text.replace(/^✦\s*/, '');
+          el.innerHTML = '<span class="personal-star">✦</span> ' + label;
+        }
+      });
+    };
+
+    const getTheme = () => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const updateThemeToggleText = () => {
+      if(!themeToggle) return;
+      const isDark = getTheme() === 'dark';
+      const label = document.documentElement.lang.toLowerCase().startsWith('en')
+        ? (isDark ? 'Switch to light mode' : 'Switch to dark mode')
+        : (isDark ? 'Ativar modo claro' : 'Ativar modo escuro');
+      themeToggle.setAttribute('aria-label', label);
+      themeToggle.setAttribute('title', label);
+    };
+    const setTheme = (theme) => {
+      document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light';
+      try { localStorage.setItem('portfolio-theme', getTheme()); } catch (_) {}
+      updateThemeToggleText();
+    };
+    themeToggle?.addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
+
+
+    // alternância suave entre os dois retratos
+    const portrait = document.querySelector('.portrait');
+    const portraitImages = portrait ? [...portrait.querySelectorAll('.portrait-image')] : [];
+    let portraitIndex = 0;
+    let portraitTimer = null;
+    let portraitVisible = false;
+
+    const showNextPortrait = () => {
+      if(portraitImages.length < 2) return;
+      portraitImages[portraitIndex].classList.remove('is-active');
+      portraitIndex = (portraitIndex + 1) % portraitImages.length;
+      portraitImages[portraitIndex].classList.add('is-active');
+    };
+
+    const stopPortraitRotation = () => {
+      if(portraitTimer){
+        clearInterval(portraitTimer);
+        portraitTimer = null;
+      }
+    };
+
+    const startPortraitRotation = () => {
+      if(reducedMotion || !portraitVisible || document.hidden || portraitImages.length < 2 || portraitTimer) return;
+      portraitTimer = setInterval(showNextPortrait, 4500);
+    };
+
+    if(portrait && portraitImages.length > 1){
+      const portraitObserver = new IntersectionObserver(entries => {
+        portraitVisible = entries[0]?.isIntersecting ?? false;
+        if(portraitVisible) startPortraitRotation();
+        else stopPortraitRotation();
+      }, {threshold:.25});
+      portraitObserver.observe(portrait);
+
+      document.addEventListener('visibilitychange', () => {
+        if(document.hidden) stopPortraitRotation();
+        else startPortraitRotation();
+      });
+    }
+
+
+    // expandable cases
+    document.querySelectorAll('.full-case').forEach(card => {
+      const head = card.querySelector('.full-case-head');
+      const toggle = () => {
+        const open = card.classList.toggle('open');
+        head.setAttribute('aria-expanded', String(open));
+      };
+      head.addEventListener('click', toggle);
+      head.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+      });
+    });

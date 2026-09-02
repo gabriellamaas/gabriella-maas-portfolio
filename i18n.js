@@ -1,342 +1,193 @@
-const portfolioTextEn = {
-  "gabriella além do currículo": "gabriella beyond the résumé",
-  "Sobre": "About",
-  "Visão de QA": "QA Perspective",
-  "Experiência": "Experience",
-  "Projetos": "Projects",
-  "Além do QA": "Beyond QA",
-  "Contato": "Contact",
-  "Qualidade não começa no teste. Começa em entender o produto.": "Quality does not start with testing. It starts with understanding the product.",
-  "Trabalho perto de Produto e Desenvolvimento, do refinamento à homologação, investigando como regras, fluxos e integrações se conectam antes que uma mudança chegue ao usuário.": "I work closely with Product and Development, from refinement through acceptance, investigating how rules, flows, and integrations connect before a change reaches the user.",
-  "E-mail": "Email",
-  "01 — Sobre": "01 — About",
-  "Quem eu sou": "Who I am",
-  "profissionalmente": "professionally",
-  "Atuo com": "I work in",
-  "qualidade de software": "software quality",
-  "em produtos que exigem entendimento de regra de negócio, atenção a detalhes e visão do todo. Gosto de entrar cedo na conversa, ainda no refinamento, e acompanhar a entrega até a homologação.": "on products that require understanding business rules, attention to detail, and a system-wide view. I like joining the conversation early, during refinement, and following the delivery through acceptance.",
-  "Meu trabalho mistura investigação e tradução. Um bug nem sempre nasce no ponto em que aparece: pode estar em uma integração, em um dado que mudou de significado ou em uma regra que não ficou clara. Por isso, entender o contexto é tão importante quanto executar o teste.": "My work combines investigation and translation. A bug does not always originate where it appears: it may come from an integration, data whose meaning changed, or a rule that was not clear. That is why understanding context matters as much as executing the test.",
-  "Produto, QA e Desenvolvimento não são etapas separadas.": "Product, QA, and Development are not separate stages.",
-  "São partes do mesmo processo.": "They are parts of the same process.",
-  "Vejo QA como o braço direito de Produto e o braço esquerdo de Desenvolvimento. Meu papel é ajudar essas áreas a compartilhar contexto, enxergar riscos antes da entrega e reduzir incerteza sobre o que realmente precisa funcionar.": "I see QA as Product’s right hand and Development’s left hand. My role is to help these areas share context, spot risks before delivery, and reduce uncertainty about what truly needs to work.",
-  "02 — Visão de qualidade": "02 — Quality perspective",
-  "A pergunta não é": "The question is not",
-  "“isso funciona?”": "“does it work?”",
-  "É": "It is",
-  "“se isso mudar, o que mais quebra?”": "“if this changes, what else breaks?”",
-  "Contexto": "Context",
-  "Risco": "Risk",
-  "Impacto": "Impact",
-  "Investigação": "Investigation",
-  "Produto": "Product",
-  "Usuário": "User",
-  "Clique em um tópico para explorar.": "Click a topic to explore.",
-  "03 — Trajetória": "03 — Journey",
-  "Como eu cheguei até aqui": "How I got here",
-  "Cada experiência mudou alguma coisa no meu jeito de pensar qualidade. Mais do que uma sequência de cargos, essa trajetória mostra como fui construindo minha visão de produto, processo, automação e impacto.": "Each experience changed something in the way I think about quality. More than a sequence of job titles, this journey shows how I built my perspective on product, process, automation, and impact.",
-  "Out/2025 — atual": "Oct/2025 — Present",
-  "Visão sistêmica": "System-wide perspective",
-  "Quando análise de impacto virou parte central do meu jeito de testar": "When impact analysis became central to the way I test",
-  "Hoje trabalho em um ERP web com regras de negócio e fluxos que se conectam o tempo todo. Participo de refinamentos com Produto e Desenvolvimento, questiono cenários antes da implementação e acompanho as entregas até a homologação.": "Today I work on a web ERP where business rules and flows are constantly connected. I take part in refinements with Product and Development, question scenarios before implementation, and follow deliveries through acceptance.",
-  "Mapeio riscos e efeitos colaterais entre telas, módulos e fluxos relacionados.": "I map risks and side effects across related screens, modules, and flows.",
-  "Crio cenários positivos, negativos e regressivos a partir de critérios de aceite e regras condicionais.": "I create positive, negative, and regression scenarios based on acceptance criteria and conditional rules.",
-  "Uso API e automação como apoio à validação funcional quando elas agregam profundidade ao teste.": "I use APIs and automation to support functional validation when they add depth to the test.",
-  "Mar/2025 — Ago/2025": "Mar/2025 — Aug/2025",
-  "Consolidando processo": "Strengthening the process",
-  "Transformar requisito em comportamento testável": "Turning requirements into testable behavior",
-  "Na ForLogic aprofundei a rotina de testes funcionais e regressivos em aplicações web. O foco estava em entender o comportamento esperado, transformar critérios de aceite em cenários claros e acompanhar releases com atenção ao que poderia escapar para o usuário.": "At ForLogic, I deepened my functional and regression testing practice in web applications. The focus was on understanding expected behavior, turning acceptance criteria into clear scenarios, and following releases with attention to what could reach the user unnoticed.",
-  "Criação, revisão e manutenção de casos de teste com foco em cenários críticos e alternativos.": "Created, reviewed, and maintained test cases focused on critical and alternative scenarios.",
-  "Acompanhamento de releases e homologações para encontrar inconsistências antes da entrega.": "Followed releases and acceptance cycles to find inconsistencies before delivery.",
-  "Priorização de regressão a partir do risco, e não apenas da quantidade de cenários disponíveis.": "Prioritized regression based on risk, not only on the number of available scenarios.",
-  "Prática": "Practice",
-  "Testes funcionais · regressão · critérios de aceite · homologação": "Functional testing · regression · acceptance criteria · acceptance",
-  "Jun/2024 — Dez/2024": "Jun/2024 — Dec/2024",
-  "Mergulho em automação": "Deep dive into automation",
-  "Onde aprofundei automação e entendi os limites dela sozinha": "Where I deepened my automation skills and understood the limits of automation on its own",
-  "Foi uma experiência profissional focada em testes automatizados. Trabalhei com Cypress, JavaScript e Git/GitFlow na construção e manutenção de cenários E2E. O aprendizado técnico foi enorme, mas o principal aprendizado veio justamente do limite da ferramenta: automação sozinha não cria qualidade.": "It was a role focused on automated testing. I worked with Cypress, JavaScript, and Git/GitFlow to build and maintain E2E scenarios. The technical learning was significant, but the most important lesson came from the tool’s limits: automation alone does not create quality.",
-  "Estruturei cenários E2E voltados para regressão de fluxos de maior impacto.": "I structured E2E scenarios for regression of higher-impact flows.",
-  "Passei a pensar mais em arquitetura, reutilização e manutenção para que a suíte continuasse confiável.": "I started thinking more about architecture, reuse, and maintainability so the suite could remain reliable.",
-  "Entendi na prática que um teste automatizado bom nasce de uma prioridade bem definida antes do código.": "I learned in practice that a good automated test starts with a well-defined priority before the code.",
-  "Ago/2022 — Jun/2024": "Aug/2022 — Jun/2024",
-  "Onde tudo começou": "Where it all started",
-  "Meu primeiro emprego em tecnologia já foi em QA": "My first job in tech was already in QA",
-  "Comecei em QA aprendendo o produto ao mesmo tempo em que aprendia a testar. Trabalhei com testes manuais, funcionais, exploratórios, automação e validação de APIs, além de participar das cerimônias e alinhamentos do time.": "I started in QA learning the product at the same time I was learning how to test. I worked with manual, functional, exploratory, automated, and API testing while also taking part in team ceremonies and alignments.",
-  "Transformava requisitos e regras de negócio em cenários principais, alternativos e regressivos.": "I turned requirements and business rules into main, alternative, and regression scenarios.",
-  "Validava APIs no Postman para entender o comportamento além da interface.": "I validated APIs in Postman to understand behavior beyond the interface.",
-  "Aprendi cedo que um bug bem comunicado ajuda tanto quanto um bug bem encontrado.": "I learned early that a well-communicated bug is as valuable as a well-found bug.",
-  "04 — Como eu trabalho": "04 — How I work",
-  "Sete movimentos, quase sempre nessa ordem": "Seven moves, almost always in this order",
-  "Entender": "Understand",
-  "Questionar": "Question",
-  "Mapear riscos": "Map risks",
-  "Testar": "Test",
-  "Investigar": "Investigate",
-  "Comunicar": "Communicate",
-  "Aprender": "Learn",
-  "05 — Na prática": "05 — In practice",
-  "Alguns problemas que me ajudaram a construir essa visão": "Some problems that helped shape this perspective",
-  "Casos baseados em experiências reais, resumidos pelo raciocínio e sem dados sensíveis de empresas ou clientes.": "Cases based on real experiences, summarized around the reasoning and without sensitive company or client data.",
-  "Iniciativa · análise de impacto": "Initiative · impact analysis",
-  "Uma iniciativa que nasceu de um problema real: como tornar relações, dependências e impactos dentro de um ERP mais visíveis e fáceis de consultar?": "An initiative born from a real problem: how can relationships, dependencies, and impacts within an ERP be made more visible and easier to consult?",
-  "A proposta é organizar contexto para enxergar além da tela alterada e apoiar decisões de teste com uma visão mais conectada do produto.": "The proposal is to organize context so the team can see beyond the changed screen and support testing decisions with a more connected view of the product.",
-  "Visualizar dependências": "Visualize dependencies",
-  "Conectar fluxos, regras e pontos que podem ser afetados por uma mudança.": "Connect flows, rules, and points that may be affected by a change.",
-  "Apoiar análise de impacto": "Support impact analysis",
-  "Tornar risco e alcance mais fáceis de discutir antes da implementação.": "Make risk and scope easier to discuss before implementation.",
-  "Melhorar refinamento e regressão": "Improve refinement and regression",
-  "Usar contexto para fazer perguntas melhores e definir um escopo de teste mais consciente.": "Use context to ask better questions and define a more deliberate test scope.",
-  "Automação de testes": "Test automation",
-  "Automação não começa no código.": "Automation does not start with code.",
-  "Ter trabalhado em uma experiência focada em automação me deu uma base técnica importante e reforçou uma convicção: automatizar só faz sentido quando o time já sabe o que precisa proteger e por quê.": "Working in a role focused on automation gave me an important technical foundation and reinforced one conviction: automation only makes sense when the team already knows what needs to be protected and why.",
-  "Entendimento": "Understanding",
-  "Prioridade": "Priority",
-  "Cenário": "Scenario",
-  "Automação": "Automation",
-  "Hoje continuo aprofundando Cypress, JavaScript e arquitetura de testes, mas dentro de um processo maior de QA. A automação é indispensável para mim; só não é o ponto de partida.": "Today I keep deepening my knowledge of Cypress, JavaScript, and test architecture, but within a broader QA process. Automation is indispensable to me; it is simply not the starting point.",
-  "Testes de API": "API testing",
-  "Validar o que a tela não mostra": "Validate what the screen does not show",
-  "Quando a interface mostra apenas o sintoma, testar a API ajuda a chegar mais perto da origem e transforma a conversa técnica em evidência.": "When the interface only shows the symptom, testing the API helps get closer to the source and turns the technical discussion into evidence.",
-  "Validação de contratos, campos obrigatórios, permissões e respostas de erro.": "Validation of contracts, required fields, permissions, and error responses.",
-  "Comparação entre comportamento esperado e retorno real do serviço.": "Comparison between expected behavior and the service’s actual response.",
-  "Uso do Postman para separar problemas de interface, integração e regra de negócio.": "Use of Postman to separate interface, integration, and business-rule issues.",
-  "Processo de qualidade": "Quality process",
-  "Qualidade que começa no refinamento": "Quality that starts during refinement",
-  "Quanto mais cedo uma dúvida aparece, mais barata ela é de resolver. Por isso gosto de participar do refinamento e transformar ambiguidades em perguntas que o time consegue responder antes de desenvolver.": "The earlier a question appears, the cheaper it is to resolve. That is why I like participating in refinement and turning ambiguity into questions the team can answer before development starts.",
-  "Cenários negativos e alternativos entram na conversa antes da tela existir.": "Negative and alternative scenarios enter the conversation before the screen exists.",
-  "Critérios de aceite precisam ser verificáveis e ligados à regra de negócio.": "Acceptance criteria need to be verifiable and connected to the business rule.",
-  "Produto, QA e Desenvolvimento dividem contexto e reduzem retrabalho juntos.": "Product, QA, and Development share context and reduce rework together.",
-  "06 — Aprendizado contínuo": "06 — Continuous learning",
-  "Tecnologia não para. Eu também não posso parar.": "Technology does not stop. Neither can I.",
-  "Não gosto de tratar estudo como uma lista de cursos concluídos. Tento conectar o que estou aprendendo a problemas reais: algo que quero testar melhor, uma dúvida técnica ou uma forma mais eficiente de trabalhar.": "I do not like treating learning as a list of completed courses. I try to connect what I am learning to real problems: something I want to test better, a technical question, or a more efficient way to work.",
-  "IA + QA": "AI + QA",
-  "Usar IA para ampliar análise, apoiar investigação e reduzir tarefas repetitivas sem terceirizar pensamento crítico.": "Use AI to expand analysis, support investigation, and reduce repetitive tasks without outsourcing critical thinking.",
-  "Arquitetura e integrações": "Architecture and integrations",
-  "Entender melhor o caminho dos dados e o que acontece além da interface.": "Better understand the path data takes and what happens beyond the interface.",
-  "Análise de impacto": "Impact analysis",
-  "Aprimorar formas de enxergar dependências e definir regressão com mais contexto.": "Improve the way I identify dependencies and define regression with more context.",
-  "Melhoria de processo": "Process improvement",
-  "Aproximar QA de Produto e Desenvolvimento para prevenir problemas antes do teste.": "Bring QA closer to Product and Development to prevent problems before testing.",
-  "Análise e Desenvolvimento de Sistemas": "Systems Analysis and Development",
-  "Univel Centro Universitário": "Univel University Center",
-  "A graduação ampliou minha visão para além do teste. Desenvolvimento, APIs, banco de dados, engenharia de software e modelagem de sistemas me ajudam a conversar melhor com quem constrói e a entender o caminho que uma informação percorre antes de chegar à interface.": "My degree broadened my perspective beyond testing. Development, APIs, databases, software engineering, and systems modeling help me communicate better with the people who build the product and understand the path information takes before reaching the interface.",
-  "O que desenvolvimento acrescentou ao meu QA": "What development added to my QA",
-  "Entender melhor como os dados circulam entre interface, API e banco.": "Better understand how data moves between the interface, API, and database.",
-  "Conversar com Desenvolvimento com mais contexto técnico.": "Talk with Development with more technical context.",
-  "Investigar comportamento além do que aparece na tela.": "Investigate behavior beyond what appears on the screen.",
-  "Enxergar regras, integrações e arquitetura como parte do teste.": "See rules, integrations, and architecture as part of testing.",
-  "07 — Além do QA": "07 — Beyond QA",
-  "Quem é a Gabriella quando desliga o computador?": "Who is Gabriella when she turns off the computer?",
-  "Cresci no interior do Paraná e sou a mais nova de três irmãos. A tecnologia entrou cedo no meu repertório muito por influência da minha família, antes mesmo de eu imaginar isso como carreira.": "I grew up in the countryside of Paraná and I am the youngest of three siblings. Technology became part of my world early, largely because of my family, long before I imagined it as a career.",
-  "Talvez por isso eu goste tanto de entender como as coisas funcionam. Esse impulso de observar, desmontar e ligar pontos aparece na Gabriella profissional, mas começou muito antes do Jira.": "Maybe that is why I enjoy understanding how things work so much. That instinct to observe, take things apart, and connect the dots shows up in my professional life, but it started long before Jira.",
-  "Antes de entrar em QA, fui olhar para UI/UX. Não fiquei nesse caminho, mas ele deixou uma marca importante: até hoje eu tento enxergar produto também pelo lado de quem usa.": "Before moving into QA, I explored UI/UX. I did not stay on that path, but it left an important mark: even today, I try to look at a product from the user’s perspective as well.",
-  "Meu primeiro emprego em tecnologia já foi como QA, então aprendi a profissão e o contexto de produto ao mesmo tempo. Talvez por isso eu tenha desenvolvido cedo esse olhar que mistura comportamento, regra e experiência do usuário.": "My first job in tech was already in QA, so I learned the profession and product context at the same time. Maybe that is why I developed early on a perspective that combines behavior, rules, and user experience.",
-  "The Big Bang Theory é minha série favorita, e eu gosto muito de sitcoms em geral.": "The Big Bang Theory is my favorite series, and I really enjoy sitcoms in general.",
-  "Também gosto de filmes de ficção científica, fantasia, universos distópicos e filmes com fatos históricos.": "I also enjoy science fiction, fantasy, dystopian universes, and films based on historical events.",
-  "A Jade é minha estagiária não remunerada (a não ser que sachê e ração premium contem como pagamento)": "Jade is my unpaid intern (unless wet food and premium cat food count as payment)",
-  "Ela me faz companhia durante as intermináveis reuniões de daily, alinhamentos, plannings e retrospectivas.": "She keeps me company through the endless daily meetings, alignments, plannings, and retrospectives.",
-  "Ela é muito amada por aqui e virou minha companhia diária, daquelas presenças que deixam a rotina mais leve, mais carinhosa e muito mais minha.": "She is very loved around here and has become my everyday companion, the kind of presence that makes the routine lighter, warmer, and much more mine.",
-  "Tenho um lado artístico e criativo bem presente. Gosto de desenhar, pintar e de hobbies manuais em geral, especialmente quando eles me colocam naquele estado de atenção calma em que o tempo passa sem pressa.": "I have a strong artistic and creative side. I enjoy drawing, painting, and hands-on hobbies in general, especially when they put me in that calm state of focus where time seems to slow down.",
-  "É um tipo de criatividade diferente da do trabalho, mas que conversa muito com ela: observação, detalhe, composição e sensibilidade para perceber o que ainda não está pronto.": "It is a different kind of creativity from my work, but the two have a lot in common: observation, detail, composition, and the sensitivity to notice what is not quite finished yet.",
-  "Quebra-cabeça é provavelmente o hobby que mais traduz a minha mente inquieta. Eu perco horas montando, separando peças e procurando novos para comprar.": "Jigsaw puzzles are probably the hobby that best reflects my restless mind. I can spend hours assembling them, sorting pieces, and looking for new ones to buy.",
-  "Quando termino, gosto de transformar alguns em decoração. Tem algo muito satisfatório em pegar um monte de fragmentos soltos e ver tudo fazer sentido no final.": "When I finish one, I like turning some of them into decoration. There is something very satisfying about taking a pile of loose fragments and seeing everything make sense in the end.",
-  "Meu gosto musical é bem diverso e, nos últimos tempos, isso ganhou outro formato: comecei a colecionar discos de vinil.": "My music taste is very diverse, and lately it has taken on a new form: I started collecting vinyl records.",
-  "Gosto do ritual de escolher um álbum, colocar para tocar e transformar a música em um momento mais presente. É quase o oposto da pressa do dia, e talvez por isso eu tenha gostado tanto.": "I enjoy the ritual of choosing an album, putting it on, and turning music into a more present moment. It is almost the opposite of the rush of the day, and maybe that is why I liked it so much.",
-  "Vamos conversar?": "Let's talk?",
-  "08 — Contato": "08 — Contact",
-  "Se meu jeito de pensar em Qualidade fizer sentido para o seu time, vamos conversar.": "If the way I think about Quality makes sense for your team, let's talk.",
-  "Estou aberta a conversas sobre oportunidades, qualidade de produto, processos e desafios em que QA possa ajudar a reduzir incerteza e melhorar a entrega.": "I am open to conversations about opportunities, product quality, processes, and challenges where QA can help reduce uncertainty and improve delivery.",
-  "Enviar um e-mail": "Send an email",
-  "Baixar currículo": "CV"
-}
-const portfolioAttrEn = {
-  "Voltar ao início": "Back to top",
-  "Idioma do portfólio": "Portfolio language",
-  "Navegação principal": "Main navigation",
-  "Abrir menu": "Open menu",
-  "Continuar para a próxima seção": "Continue to the next section",
-  "Links profissionais": "Professional links",
-  "Exemplo de teste Cypress do próprio portfólio": "Cypress test example for this portfolio",
-  "Trecho de código Cypress testando o portfólio de Gabriella Maas": "Cypress code snippet testing Gabriella Maas's portfolio",
-  "Pilares da minha visão de QA": "Pillars of my QA perspective",
-  "Etapas do meu processo de QA": "Stages of my QA process",
-  "Objetivos do VR Atlas": "VR Atlas goals",
-  "Fluxo antes da automação": "Flow before automation",
-  "Focos atuais de aprendizado": "Current learning focus",
-  "Retrato de Gabriella em área externa": "Portrait of Gabriella outdoors",
-  "Gabriella segurando um bolo de aniversário": "Gabriella holding a birthday cake",
-  "Retrato de Gabriella": "Portrait of Gabriella",
-  "Jade ao lado do computador": "Jade next to the computer",
-  "Desenho de cerejas em um caderno": "Cherry drawing in a notebook",
-  "Peças de quebra-cabeça sobre uma mesa": "Jigsaw puzzle pieces on a table",
-  "Disco de vinil sobre uma vitrola": "Vinyl record on a turntable",
-  "Navegação entre páginas pessoais": "Personal page navigation",
-  "Página anterior": "Previous page",
-  "Selecionar página": "Select page",
-  "Próxima página": "Next page"
-}
+// bilingual PT / EN
+    const staticTranslations = new Map(Object.entries({
+      'Sobre':'About','Visão de QA':'QA vision','Experiência':'Experience','Projetos':'Projects','Além do QA':'Beyond QA','Currículo ↗':'CV ↗',
+      'Analista de QA · Qualidade de Produto · Testes & Automação':'QA Analyst · Product Quality · Testing & Automation',
+      'Qualidade não começa no teste. Começa em entender o produto.':'Quality does not start with testing. It starts with understanding the product.',
+      'Trabalho entre Produto e Desenvolvimento para transformar regras, riscos e dependências em decisões de teste mais conscientes, do refinamento à homologação.':'I work between Product and Development to turn rules, risks, and dependencies into more intentional testing decisions, from refinement through validation.',
+      'Ver projetos ↓':'View projects ↓','GitHub ↗':'GitHub ↗','E-mail':'Email',
+      '01 — Sobre':'01 — About','Quem eu sou profissionalmente':'Who I am professionally',
+      'Atuo com qualidade de software em produtos que exigem entendimento de regra de negócio, atenção a detalhes e visão do todo.':'I work in software quality on products that require business-rule understanding, attention to detail, and a broad view of the system.',
+      'Gosto de entrar cedo na conversa, ainda no refinamento, porque muitos problemas podem ser evitados antes de existir uma tela para testar. Durante a validação, investigo comportamento além do sintoma: regra, integração, dado e contexto fazem parte do mesmo problema.':'I like to join the conversation early, during refinement, because many problems can be prevented before there is even a screen to test. During validation, I investigate beyond the symptom: rules, integrations, data, and context are part of the same problem.',
+      'Produto, QA e Desenvolvimento não são etapas separadas. São partes do mesmo processo.':'Product, QA, and Development are not separate stages. They are parts of the same process.',
+      '02 — Visão de qualidade':'02 — Quality vision','A pergunta não é “isso funciona?”\nÉ “se isso mudar, o que mais quebra?”':'The question is not “does this work?”\nIt is “if this changes, what else can break?”',
+      'Contexto':'Context','Risco':'Risk','Impacto':'Impact','Investigação':'Investigation','Produto':'Product','Usuário':'User',
+      '03 — Trajetória':'03 — Journey','Como eu cheguei até aqui':'How I got here','Cada experiência acrescentou uma camada ao meu jeito de pensar qualidade: produto, processo, automação e análise de impacto.':'Each experience added a layer to how I think about quality: product, process, automation, and impact analysis.',
+      'Visão sistêmica':'Systems thinking','Quando análise de impacto virou parte central do meu jeito de testar':'When impact analysis became central to how I test',
+      'Atuo em um ERP web com regras de negócio e fluxos conectados. Participo de refinamentos, questiono cenários antes da implementação e acompanho a entrega até a homologação.':'I work on a web ERP with connected business rules and flows. I participate in refinements, question scenarios before implementation, and follow deliveries through validation.',
+      'Mapeio riscos e efeitos colaterais entre telas, módulos e fluxos relacionados.':'I map risks and side effects across screens, modules, and related flows.',
+      'Crio cenários positivos, negativos e regressivos a partir de regras e critérios de aceite.':'I design positive, negative, and regression scenarios from rules and acceptance criteria.',
+      'Uso API e automação como apoio quando ajudam a aprofundar a validação.':'I use APIs and automation as support when they add depth to validation.',
+      'Consolidando processo':'Consolidating process','Transformar requisito em comportamento testável':'Turning requirements into testable behavior',
+      'Aprofundei testes funcionais e regressivos em aplicações web, com foco em transformar critérios de aceite em cenários claros e priorizar regressão pelo risco.':'I deepened my work with functional and regression testing for web applications, focusing on turning acceptance criteria into clear scenarios and prioritizing regression by risk.','Criei, revisei e mantive cenários e casos de teste a partir de requisitos, critérios de aceite e regras de negócio.':'I created, reviewed, and maintained test scenarios and test cases based on requirements, acceptance criteria, and business rules.','Priorizei fluxos críticos, cenários alternativos e pontos relevantes para regressão.':'I prioritized critical flows, alternative scenarios, and relevant regression points.','Validei novas funcionalidades e correções antes das releases, acompanhando entregas e homologações.':'I validated new features and fixes before releases, following deliveries through validation.',
+      'Mergulho em automação':'Deep dive into automation','Automação como engenharia, não como fim':'Automation as engineering, not as an end in itself',
+      'Trabalhei com Cypress, JavaScript e Git/GitFlow na construção e manutenção de cenários E2E. Foi onde aprofundei arquitetura, reutilização e manutenção de suíte.':'I worked with Cypress, JavaScript, and Git/GitFlow building and maintaining E2E scenarios. This is where I deepened my knowledge of architecture, reuse, and suite maintainability.','Desenvolvi e mantive testes automatizados utilizando Cypress e JavaScript.':'I developed and maintained automated tests using Cypress and JavaScript.','Estruturei cenários E2E para validar fluxos críticos e apoiar a regressão.':'I structured E2E scenarios to validate critical flows and support regression testing.','Executei testes funcionais como complemento às validações automatizadas e acompanhei os bugs encontrados.':'I ran functional tests alongside automated validation and followed up on the bugs found.',
+      'Onde tudo começou':'Where it all started','Meu primeiro emprego em tecnologia já foi em QA':'My first job in tech was already in QA',
+      'Comecei em QA aprendendo o produto ao mesmo tempo em que aprendia a testar. Trabalhei com testes manuais, funcionais, exploratórios, automação, validação de APIs e testes de consistência no banco de dados com SQL.':'I started in QA learning the product while learning how to test. I worked with manual, functional, exploratory and automated testing, API validation, and database consistency checks with SQL.','Executei testes funcionais, exploratórios, regressivos e automatizados em aplicações web.':'I ran functional, exploratory, regression, and automated tests on web applications.','Validei APIs REST utilizando Postman para conferir comportamento e respostas dos serviços.':'I validated REST APIs with Postman to verify service behavior and responses.','Realizei testes de consistência no banco de dados com SQL para validar dados e comportamento das funcionalidades.':'I performed database consistency checks with SQL to validate data and feature behavior.',
+      '04 — Como eu trabalho':'04 — How I work','Seis movimentos. Aprendizado o tempo todo.':'Six movements. Continuous learning.',
+      'Entender':'Understand','Questionar':'Question','Mapear riscos':'Map risks','Testar':'Test','Investigar':'Investigate','Comunicar':'Communicate',
+      '05 — Na prática':'05 — In practice','Como essa visão aparece no trabalho':'How this vision shows up in the work',
+      'pensamento → evidência':'thinking → evidence',
+      'Iniciativa · análise de impacto':'Initiative · impact analysis','Como tornar relações, dependências e possíveis efeitos colaterais de um ERP mais visíveis antes de decidir o que testar?':'How can relationships, dependencies, and potential side effects in an ERP become more visible before deciding what to test?',
+      'A proposta é transformar conhecimento espalhado em um mapa consultável para apoiar refinamento, análise de impacto e definição de regressão.':'The proposal is to turn scattered knowledge into a searchable map that supports refinement, impact analysis, and regression scope definition.',
+      'mudança':'change','Funcionalidade alterada':'Changed functionality','relação':'relation','Regra de negócio':'Business rule','impacto':'impact','Fluxo relacionado':'Related flow','Integração / dado':'Integration / data','regressão':'regression','Permissões':'Permissions','Relatórios / saídas':'Reports / outputs','Cenário alternativo':'Alternative scenario','Exemplo conceitual · sem dados internos de empresa ou cliente':'Conceptual example · no internal company or client data',
+      'Projeto público · automação':'Public project · automation','QA Automation Framework · Cypress':'QA Automation Framework · Cypress','Aqui a automação deixa de ser só discurso: o código está público.':'Here automation is more than a talking point: the code is public.','Projeto E2E em Cypress e JavaScript usando Page Object Model, com cenários de login, carrinho e checkout em uma aplicação de demonstração.':'E2E project in Cypress and JavaScript using Page Object Model, with login, cart, and checkout scenarios in a demo application.','Ver projeto no GitHub ↗':'View project on GitHub ↗',
+      'Case anonimizado · investigação':'Anonymized case · investigation','Quando a tela mostra o sintoma, mas não a origem':'When the screen shows the symptom, but not the source','01 · Sintoma':'01 · Symptom','02 · Investigação':'02 · Investigation','03 · Evidência':'03 · Evidence','04 · Comunicação':'04 · Communication',
+      'A interface apresenta um comportamento inesperado ou uma informação diferente do esperado.':'The interface shows unexpected behavior or information that differs from what is expected.','Reproduzir o fluxo e comparar interface, request, response e regra de negócio.':'Reproduce the flow and compare the interface, request, response, and business rule.','Usar a API para separar problema de apresentação, integração, dado ou regra.':'Use the API to distinguish presentation, integration, data, or rule issues.','Levar ao time o comportamento observado, contexto, impacto e evidências para reduzir ida e volta.':'Bring the observed behavior, context, impact, and evidence to the team to reduce back-and-forth.',
+      'Testes de API':'API testing','Validar o que a tela não mostra':'Validate what the screen does not show','Contrato':'Contract','Campos obrigatórios, tipos, estrutura e consistência do retorno.':'Required fields, types, structure, and response consistency.','Regra':'Rule','Comparação entre o comportamento esperado e o que o serviço realmente responde.':'Compare expected behavior with what the service actually returns.','Negativos':'Negative cases','Permissões, entradas inválidas, ausências de dados e respostas de erro.':'Permissions, invalid inputs, missing data, and error responses.','Diagnóstico':'Diagnosis','Postman como apoio para separar interface, integração e regra de negócio.':'Use Postman to help distinguish interface, integration, and business-rule issues.',
+      '06 — Aprendizado contínuo':'06 — Continuous learning','Estudo que volta para a prática':'Learning that returns to practice','Não trato aprendizado como coleção de cursos. Tento conectar o que estudo a perguntas que aparecem no trabalho.':'I do not treat learning as a collection of courses. I try to connect what I study to questions that come up at work.','IA + QA':'AI + QA','Ampliar análise, investigação e tarefas repetitivas sem terceirizar pensamento crítico.':'Expand analysis, investigation, and repetitive tasks without outsourcing critical thinking.','Arquitetura':'Architecture','Entender melhor caminho de dados, integrações e comportamento além da interface.':'Better understand data paths, integrations, and behavior beyond the interface.','Aprimorar formas de visualizar dependências e construir regressão com contexto.':'Improve ways to visualize dependencies and build regression with context.','Análise e Desenvolvimento de Sistemas':'Systems Analysis and Development','A graduação amplia minha visão para além do teste e me ajuda a conversar com Desenvolvimento com mais contexto técnico.':'My degree broadens my view beyond testing and helps me communicate with Development with more technical context.','Interface, API, banco de dados e fluxo da informação.':'Interface, API, database, and information flow.','Engenharia de software e modelagem de sistemas.':'Software engineering and systems modeling.','Investigação de comportamento além do que aparece na tela.':'Investigating behavior beyond what appears on the screen.',
+      '07 — Além do QA':'07 — Beyond QA','Quem é a Gabriella quando desliga o computador?':'Who is Gabriella when she turns off the computer?','Curiosidade, criatividade e uma tendência quase inevitável de tentar entender como as coisas se encaixam.':'Curiosity, creativity, and an almost inevitable tendency to understand how things fit together.','Cresci no interior do Paraná e a tecnologia entrou cedo no meu repertório. Antes de QA, também olhei para UI/UX. Foi um caminho que não segui profissionalmente, mas que deixou um olhar forte para produto e para quem usa.':'I grew up in the countryside of Paraná, and technology became part of my world early. Before QA, I also explored UI/UX. It was a path I did not pursue professionally, but it gave me a strong product and user perspective.','✦ Criatividade':'✦ Creativity','Desenho, pintura e hobbies manuais me dão outro jeito de exercitar observação e detalhe.':'Drawing, painting, and hands-on hobbies give me another way to practice observation and attention to detail.','✦ Quebra-cabeça':'✦ Puzzles','Fragmentos soltos até tudo fazer sentido. Talvez seja o hobby que melhor traduz a minha cabeça.':'Loose fragments until everything makes sense. It may be the hobby that best describes how my mind works.','✦ Música':'✦ Music','Comecei a colecionar vinis e gosto do ritual de desacelerar para ouvir um álbum inteiro.':'I started collecting vinyl records and enjoy the ritual of slowing down to listen to a full album.',
+      '08 — Contato':'08 — Contact','Se qualidade também é uma conversa, vamos começar uma?':'If quality is also a conversation, shall we start one?','Para vagas, projetos ou uma boa conversa sobre QA, produto, risco e automação.':'For opportunities, projects, or a good conversation about QA, product, risk, and automation.','Gabriella Maas · Quality Assurance':'Gabriella Maas · Quality Assurance','2026':'2026',
 
-const portfolioQaEn = {
-  "contexto": {
-    "label": "Context",
-    "text": "Before testing, I need to understand who it is for, what problem is being solved, and what business decision sits behind the screen. Without context, testing becomes mere checking."
-  },
-  "risco": {
-    "label": "Risk",
-    "text": "Not everything deserves the same level of effort. I prioritize what could have the greatest impact if it fails: sensitive rules, financial flows, integrations, permissions, or data that would be difficult to correct later."
-  },
-  "impacto": {
-    "label": "Impact",
-    "text": "Every change has a radius of impact. My job is to understand how far it can reach: related screens, neighboring modules, reports, routines, and integrations that depend on the same data."
-  },
-  "investigacao": {
-    "label": "Investigation",
-    "text": "Reproducing a bug is only one part of the job. I like to isolate data, rules, environment, and path to understand under which condition it happens and what that reveals about the system."
-  },
-  "produto": {
-    "label": "Product",
-    "text": "Quality is not only the absence of errors. The feature also needs to solve the right problem. If it works technically but does not meet the user or business need, there is still a quality problem."
-  },
-  "usuario": {
-    "label": "User",
-    "text": "The person on the other side does not always use the system the way the flow was designed. Usability, shortcuts, urgency, context, and imperfect data are also part of testing."
-  }
-}
-const portfolioProcessEn = [
-  "I read the business rule, talk with Product, and map the path the data will take. If I cannot explain the feature, I still do not understand it well enough to test it.",
-  "I ask the questions that can change how the story is understood: what if the field is empty? what if the record already exists? who uses this data later? what behavior do we expect in an exception?",
-  "I separate what is critical from what has lower impact. High risks receive deeper analysis and negative scenarios; lower risks go through a faster verification.",
-  "Functional, exploratory, regression, E2E, or API. The technique comes after the question I need to answer and the risk I need to cover.",
-  "When something fails, I try not to stop at the symptom. I isolate data, environment, and steps to get closer to the cause and report the bug with enough context to support the investigation.",
-  "A well-written bug saves the team time. I document evidence, expected behavior, actual behavior, impact, and what I have already ruled out during the analysis.",
-  "After delivery, anything that escaped becomes learning: a regression scenario, a new refinement question, or a process change to reduce the chance of repeating the same problem."
-]
-const portfolioQaPt = JSON.parse(JSON.stringify(qaContent))
-const portfolioProcessPt = [...processTexts]
+      /* Traduções de nós que ficam separados visualmente por <strong>, <br> ou componentes. */
+      'gabriella além do currículo':'gabriella beyond the CV',
+      
+      'Produto, QA e Desenvolvimento não são etapas separadas.':'Product, QA, and Development are not separate stages.',
+      'São partes do mesmo processo.':'They are parts of the same process.',
+      'A pergunta não é “isso funciona?”':'The question is not “does this work?”',
+      'É':'It is',
+      '“se isso mudar, o que mais quebra?”':'“if this changes, what else can break?”',
+      'Se qualidade também é uma conversa,':'If quality is also a conversation,',
+      'vamos começar uma?':'shall we start one?',
+      'Out/2025 — atual':'Oct/2025 — present','Mar/2025 — Ago/2025':'Mar/2025 — Aug/2025','Jun/2024 — Dez/2024':'Jun/2024 — Dec/2024','Ago/2022 — Jun/2024':'Aug/2022 — Jun/2024',
+      'Testes funcionais':'Functional testing','Regressão':'Regression','Critérios de aceite':'Acceptance criteria','Homologação':'Validation',
+      'dados de teste':'test data',
+      
+      'esta estrutura está pronta, mas o conteúdo é propositalmente genérico. Na próxima rodada, substituímos por um caso real seu, anonimizado, sem inventar resultado ou detalhe interno.':'this structure is ready, but the content is intentionally generic. In the next round, we will replace it with a real anonymized case, without inventing results or internal details.',
+      'Evoluir formas de visualizar dependências e construir regressão com contexto.':'Improve ways to visualize dependencies and build regression with context.',
+      'LinkedIn ↗':'LinkedIn ↗'
+    }));
 
-function getStoredLanguage() {
-  try { return localStorage.getItem('portfolioLanguage') === 'en' ? 'en' : 'pt' } catch { return 'pt' }
-}
-function storeLanguage(lang) {
-  try { localStorage.setItem('portfolioLanguage', lang) } catch {}
-}
-let currentLanguage = getStoredLanguage()
+    const qaVisionByLang = {
+      pt: {
+        contexto:['Contexto','Antes de testar, preciso entender para quem aquilo serve, qual problema está sendo resolvido e que decisão de negócio existe por trás da tela. Sem contexto, teste vira apenas conferência.'],
+        risco:['Risco','Nem todo cenário merece a mesma profundidade. Priorizo o que pode gerar maior impacto para o negócio, para o usuário e para fluxos que sustentam a entrega.'],
+        impacto:['Impacto','Uma alteração raramente termina na tela em que foi feita. Procuro relações, dependências e efeitos colaterais para definir uma regressão que faça sentido.'],
+        investigacao:['Investigação','Quando o comportamento não fecha, sigo o dado. Interface, request, response, regra e integração ajudam a transformar suspeita em evidência.'],
+        produto:['Produto','Qualidade melhora quando QA participa das decisões cedo. Refinamento é um espaço para remover ambiguidade e tornar comportamento esperado mais claro antes do desenvolvimento.'],
+        usuario:['Usuário','A regra pode estar tecnicamente correta e ainda gerar uma experiência ruim. O teste precisa proteger também o caminho de quem usa o produto.']
+      },
+      en: {
+        contexto:['Context','Before testing, I need to understand who it serves, what problem is being solved, and what business decision sits behind the screen. Without context, testing becomes mere checking.'],
+        risco:['Risk','Not every scenario deserves the same depth. I prioritize what can create greater impact for the business, the user, and the flows that sustain the delivery.'],
+        impacto:['Impact','A change rarely ends on the screen where it was made. I look for relationships, dependencies, and side effects to define regression that makes sense.'],
+        investigacao:['Investigation','When behavior does not add up, I follow the data. Interface, request, response, rules, and integration help turn suspicion into evidence.'],
+        produto:['Product','Quality improves when QA takes part in decisions early. Refinement is a space to remove ambiguity and make expected behavior clearer before development.'],
+        usuario:['User','A rule can be technically correct and still create a poor experience. Testing also needs to protect the path of the person using the product.']
+      }
+    };
+    const processByLang = {
+      pt: processTexts,
+      en: [
+        'I read the business rule, talk with Product, and map the path the data will take. If I cannot explain the feature, I do not understand it well enough to test it yet.',
+        'I look for ambiguity, conditions, exceptions, and decisions that are still unclear. A good question during refinement can prevent several bugs later.',
+        'I separate what is essential from what is secondary and look for side effects. High-risk areas get deeper and negative scenarios; low-risk areas get proportional checks.',
+        'I execute main, alternative, negative, and regression scenarios prioritized by risk. Tools are a means, not the objective.',
+        'When something fails, I try to go beyond the screen: data, API, integration, and context help locate the source and produce better evidence.',
+        'I record enough for another person to understand the behavior, impact, evidence, and reproduction conditions without rebuilding the entire investigation.'
+      ]
+    };
+    let currentLang = 'pt';
+    const originalTextNodes = [];
+    const collectTextNodes = () => {
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node){
+          if(!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if(node.parentElement && ['SCRIPT','STYLE'].includes(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      let n; while(n=walker.nextNode()) originalTextNodes.push([n,n.nodeValue]);
+    };
+    collectTextNodes();
+    const translateStatic = (lang) => {
+      originalTextNodes.forEach(([node,orig]) => {
+        if(lang==='pt'){ node.nodeValue = orig; return; }
+        const lead=orig.match(/^\s*/)[0], trail=orig.match(/\s*$/)[0], core=orig.trim();
+        if(staticTranslations.has(core)) node.nodeValue=lead+staticTranslations.get(core)+trail;
+      });
+    };
+    const codeByLang = {
+      pt: {
+        suite: "'gabriella além do currículo'",
+        test: "'mostra mais do que cabe em um CV'",
+        context: "'Contexto'",
+        risk: "'Risco'",
+        impact: "'Impacto'",
+        beyond: "'Além do QA'",
+        talk: "'Vamos conversar?'"
+      },
+      en: {
+        suite: "'gabriella beyond the CV'",
+        test: "'shows more than fits in a CV'",
+        context: "'Context'",
+        risk: "'Risk'",
+        impact: "'Impact'",
+        beyond: "'Beyond QA'",
+        talk: "'Let\'s talk?'"
+      }
+    };
+    const updateCodeLanguage = (lang) => {
+      const t = codeByLang[lang];
+      document.getElementById('code-suite').textContent = t.suite;
+      document.getElementById('code-test').textContent = t.test;
+      document.getElementById('code-context').textContent = t.context;
+      document.getElementById('code-risk').textContent = t.risk;
+      document.getElementById('code-impact').textContent = t.impact;
+      document.getElementById('code-beyond').textContent = t.beyond;
+      document.getElementById('code-talk').textContent = t.talk;
+    };
+    const attributeTextByLang = {
+      pt: {
+        title:'Gabriella Maas · Portfólio de QA',
+        description:'Portfólio de Gabriella Maas · Analista de QA, qualidade de produto, testes funcionais e automação.',
+        menu:'Abrir menu',
+        code:'Trecho de código Cypress sobre o portfólio',
+        vision:'Pilares da visão de QA',
+        map:'Exemplo conceitual de mapa de dependências',
+        repo:'Estrutura resumida do repositório',
+        portrait:'Retrato de Gabriella Maas'
+      },
+      en: {
+        title:'Gabriella Maas · QA Portfolio',
+        description:'Gabriella Maas portfolio · QA Analyst, product quality, functional testing, and automation.',
+        menu:'Open menu',
+        code:'Cypress code snippet about the portfolio',
+        vision:'QA vision pillars',
+        map:'Conceptual example of a dependency map',
+        repo:'Repository structure summary',
+        portrait:'Portrait of Gabriella Maas'
+      }
+    };
+    const translateAttributes = (lang) => {
+      const t=attributeTextByLang[lang];
+      document.title=t.title;
+      const meta=document.querySelector('meta[name="description"]');
+      if(meta) meta.setAttribute('content',t.description);
+      document.getElementById('menu')?.setAttribute('aria-label',t.menu);
+      document.querySelector('.code-window')?.setAttribute('aria-label',t.code);
+      document.querySelector('.vision-tabs')?.setAttribute('aria-label',t.vision);
+      document.querySelector('.map')?.setAttribute('aria-label',t.map);
+      document.querySelector('.repo-mini')?.setAttribute('aria-label',t.repo);
+      document.querySelector('.portrait img')?.setAttribute('alt',t.portrait);
+    };
 
-const codeWindowI18n = document.querySelector('.code-window')
-const codeElementsI18n = codeWindowI18n ? [...codeWindowI18n.querySelectorAll('.code-line code')] : []
-const codePtTemplates = codeElementsI18n.map(code => code.innerHTML)
-const codeEnReplacements = [
-  ["'gabriella além do currículo'", "'gabriella beyond the résumé'"],
-  ["'mostra mais do que cabe em um CV'", "'shows more than fits in a CV'"],
-  ["'Contexto'", "'Context'"],
-  ["'Risco'", "'Risk'"],
-  ["'Impacto'", "'Impact'"],
-  ["'Além do QA'", "'Beyond QA'"],
-  ["'Vamos conversar?'", "\"Let's talk?\""]
-]
-const codeEnTemplates = codePtTemplates.map(template => codeEnReplacements.reduce((value, [from, to]) => value.replaceAll(from, to), template))
+    const applyLanguage = (lang) => {
+      if(typeof cancelHeroCodeTyping === 'function') cancelHeroCodeTyping();
+      currentLang = lang;
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      translateStatic(lang);
+      restorePersonalStars();
+      updateCodeLanguage(lang);
+      translateAttributes(lang);
+      document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+      const activeVision=document.querySelector('.vision-tab.active');
+      if(activeVision){ const [label,text]=qaVisionByLang[lang][activeVision.dataset.key]; visionLabel.textContent=label; visionText.textContent=text; }
+      const activeStep=[...document.querySelectorAll('.step')].findIndex(x=>x.classList.contains('active'));
+      processCopy.textContent=processByLang[lang][Math.max(0,activeStep)];
+      localStorage.setItem('portfolio-lang',lang);
+      if(typeof updateThemeToggleText === 'function') updateThemeToggleText();
+    };
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>applyLanguage(btn.dataset.lang)));
 
-function preserveWhitespace(raw, translated) {
-  const leading = raw.match(/^\s*/)?.[0] || ''
-  const trailing = raw.match(/\s*$/)?.[0] || ''
-  return `${leading}${translated}${trailing}`
-}
-
-const staticTextEntries = []
-const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
-let textNode
-while ((textNode = walker.nextNode())) {
-  const parent = textNode.parentElement
-  if (!parent || parent.closest('.code-window')) continue
-  const trimmed = textNode.textContent.trim()
-  if (!trimmed) continue
-  staticTextEntries.push({ node: textNode, raw: textNode.textContent, pt: trimmed })
-}
-
-const attrEntries = []
-document.querySelectorAll('[aria-label],[alt],[title]').forEach(element => {
-  ;['aria-label','alt','title'].forEach(attr => {
-    if (element.hasAttribute(attr)) attrEntries.push({ element, attr, pt: element.getAttribute(attr) })
-  })
-})
-
-const metaDescription = document.querySelector('meta[name="description"]')
-const metaPt = metaDescription?.getAttribute('content') || ''
-const metaEn = 'Gabriella Maas portfolio — Quality Assurance, product quality, manual testing, automation, and impact analysis.'
-
-function setDynamicLanguage(lang) {
-  const qaSource = lang === 'en' ? portfolioQaEn : portfolioQaPt
-  Object.keys(qaContent).forEach(key => Object.assign(qaContent[key], qaSource[key]))
-  const processSource = lang === 'en' ? portfolioProcessEn : portfolioProcessPt
-  processTexts.splice(0, processTexts.length, ...processSource)
-
-  const activeQa = document.querySelector('.qa-tab.is-active')
-  if (activeQa) {
-    const data = qaContent[activeQa.dataset.qa]
-    qaLabel.textContent = data.label
-    qaText.textContent = data.text
-  }
-  const activeProcess = document.querySelector('.process-tab.is-active')
-  if (activeProcess) processText.textContent = processTexts[Number(activeProcess.dataset.stage)]
-}
-
-function setCodeLanguage(lang, animate = false) {
-  if (!codeWindowI18n) return
-  if (typeof cancelHeroCodeTyping === 'function') cancelHeroCodeTyping()
-  const templates = lang === 'en' ? codeEnTemplates : codePtTemplates
-  codeElementsI18n.forEach((code, index) => { code.innerHTML = templates[index] })
-  codeWindowI18n.classList.remove('is-typing')
-  delete codeWindowI18n.dataset.typed
-  codeWindowI18n.querySelectorAll('.code-line').forEach(line => line.classList.remove('is-visible','is-typing','is-empty'))
-  const result = codeWindowI18n.querySelector('.code-result')
-  if (result) {
-    result.classList.remove('is-visible','is-typing')
-    result.innerHTML = '<span>✓</span> 1 passing <small>gabriella.cy.js</small>'
-  }
-  if (animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    setTimeout(() => { if (typeof startHeroCodeTyping === 'function') startHeroCodeTyping() }, 80)
-  }
-}
-
-function updateDiaryDotLabels(lang) {
-  document.querySelectorAll('.diary-dot').forEach((dot, index) => {
-    dot.setAttribute('aria-label', lang === 'en' ? `Show page ${index + 1}` : `Mostrar página ${index + 1}`)
-  })
-}
-
-function applyLanguage(lang, options = {}) {
-  currentLanguage = lang === 'en' ? 'en' : 'pt'
-  document.documentElement.lang = currentLanguage === 'en' ? 'en' : 'pt-BR'
-  storeLanguage(currentLanguage)
-
-  staticTextEntries.forEach(entry => {
-    const translated = currentLanguage === 'en' ? (portfolioTextEn[entry.pt] || entry.pt) : entry.pt
-    entry.node.textContent = preserveWhitespace(entry.raw, translated)
-  })
-
-  attrEntries.forEach(entry => {
-    const translated = currentLanguage === 'en' ? (portfolioAttrEn[entry.pt] || entry.pt) : entry.pt
-    entry.element.setAttribute(entry.attr, translated)
-  })
-
-  document.title = 'Gabriella Maas - QA'
-  if (metaDescription) metaDescription.setAttribute('content', currentLanguage === 'en' ? metaEn : metaPt)
-
-  document.querySelectorAll('.language-option').forEach(button => {
-    const active = button.dataset.lang === currentLanguage
-    button.classList.toggle('is-active', active)
-    button.setAttribute('aria-pressed', String(active))
-  })
-
-  setDynamicLanguage(currentLanguage)
-  updateDiaryDotLabels(currentLanguage)
-  setCodeLanguage(currentLanguage, Boolean(options.animateCode))
-}
-
-document.querySelectorAll('.language-option').forEach(button => {
-  button.addEventListener('click', () => {
-    if (button.dataset.lang === currentLanguage) return
-    applyLanguage(button.dataset.lang, { animateCode: true })
-  })
-})
-
-applyLanguage(currentLanguage, { animateCode: false })
+// Restore the saved language after all UI helpers are available.
+applyLanguage(localStorage.getItem('portfolio-lang') === 'en' ? 'en' : 'pt');
