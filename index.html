@@ -85,6 +85,15 @@
     .code-title{font-family:"IBM Plex Mono",monospace;font-size:10px;color:#D2DADC}.code-tech{font-family:"IBM Plex Mono",monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#819296}
     .code-body{padding:22px 20px 24px;overflow:hidden;font-family:"IBM Plex Mono",monospace;font-size:10px;line-height:1.72}
     .code-line{display:grid;grid-template-columns:28px minmax(0,1fr);gap:11px;min-width:0}.code-num{color:#53666A;text-align:right;user-select:none}.code-text{white-space:pre-wrap;overflow-wrap:anywhere;color:#C7D2D4}.code-text .kw{color:#B997FF}.code-text .fn{color:#77A5FF}.code-text .str{color:#8FD5BA}.code-pass{padding:12px 18px;border-top:1px solid rgba(255,255,255,.07);font-family:"IBM Plex Mono",monospace;font-size:9px;color:#79D6A8}
+    /* Cypress typing animation */
+    .code-window.is-typing .code-line,.code-window.is-typing .code-pass{opacity:0}
+    .code-window.is-typing .code-line.is-visible,.code-window.is-typing .code-pass.is-visible{opacity:1}
+    .code-window.is-typing .code-line.is-typing .code-text::after,.code-window.is-typing .code-pass.is-typing::after{content:"";display:inline-block;width:1.5px;height:1.1em;margin-left:2px;vertical-align:-.15em;background:#8D6CF0;animation:blinkCaret .85s step-end infinite}
+    .code-window.is-typing .code-line.is-empty .code-text::after{display:none}
+    @keyframes blinkCaret{50%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){
+      .code-line,.code-pass{opacity:1!important}
+    }
 
     /* HERO */
     .hero{
@@ -1070,6 +1079,92 @@ html[data-theme="dark"] .code-window{border:1px solid rgba(110,167,255,.14);box-
     document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>applyLanguage(btn.dataset.lang)));
 
 
+
+    // Cypress typing animation — runs once whenever the page is loaded
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    let heroCodeTypingVersion = 0;
+    let heroCodeRestore = null;
+
+    function cancelHeroCodeTyping(){
+      heroCodeTypingVersion += 1;
+      if(heroCodeRestore) heroCodeRestore();
+      heroCodeRestore = null;
+      const codeWindow = document.querySelector('.code-window');
+      if(codeWindow){
+        codeWindow.classList.remove('is-typing');
+        codeWindow.querySelectorAll('.code-line').forEach(line => line.classList.remove('is-visible','is-typing','is-empty'));
+        codeWindow.querySelector('.code-pass')?.classList.remove('is-visible','is-typing');
+      }
+    }
+
+    async function startHeroCodeTyping(){
+      const codeWindow = document.querySelector('.code-window');
+      if(!codeWindow || reducedMotion || codeWindow.dataset.typed === 'true') return;
+
+      const version = ++heroCodeTypingVersion;
+      const lines = [...codeWindow.querySelectorAll('.code-line')];
+      const pass = codeWindow.querySelector('.code-pass');
+      const state = lines.map(line => {
+        const textEl = line.querySelector('.code-text');
+        return {line, textEl, html:textEl.innerHTML, text:textEl.textContent};
+      });
+      const passHtml = pass?.innerHTML || '';
+      const passText = pass?.textContent || '';
+
+      heroCodeRestore = () => {
+        state.forEach(item => { item.textEl.innerHTML = item.html; });
+        if(pass) pass.innerHTML = passHtml;
+      };
+
+      codeWindow.dataset.typed = 'true';
+      codeWindow.classList.add('is-typing');
+      lines.forEach(line => line.classList.remove('is-visible','is-typing','is-empty'));
+      if(pass) pass.classList.remove('is-visible','is-typing');
+
+      for(const item of state){
+        if(version !== heroCodeTypingVersion) return;
+        item.line.classList.add('is-visible');
+        item.textEl.textContent = '';
+
+        if(!item.text.trim()){
+          item.line.classList.add('is-empty');
+          await wait(38);
+          item.textEl.innerHTML = item.html;
+          continue;
+        }
+
+        item.line.classList.add('is-typing');
+        const speed = item.text.length > 62 ? 4 : item.text.length > 36 ? 6 : 8;
+        for(const char of item.text){
+          if(version !== heroCodeTypingVersion) return;
+          item.textEl.textContent += char;
+          await wait(speed);
+        }
+        item.textEl.innerHTML = item.html;
+        item.line.classList.remove('is-typing');
+        await wait(22);
+      }
+
+      if(pass){
+        pass.classList.add('is-visible','is-typing');
+        pass.textContent = '';
+        for(const char of passText){
+          if(version !== heroCodeTypingVersion) return;
+          pass.textContent += char;
+          await wait(16);
+        }
+        pass.innerHTML = passHtml;
+        pass.classList.remove('is-typing');
+      }
+
+      codeWindow.classList.remove('is-typing');
+      heroCodeRestore = null;
+    }
+
+    window.addEventListener('load', () => {
+      if(!reducedMotion) setTimeout(startHeroCodeTyping, 250);
+    });
 
     // theme switcher — mantém a escolha entre visitas
     const themeToggle = document.getElementById('themeToggle');
