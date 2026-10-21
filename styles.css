@@ -439,9 +439,6 @@ html[data-theme="dark"] .code-window{border:1px solid rgba(110,167,255,.14);box-
     main:focus{outline:none}
     [role="button"]:focus-visible,[role="tabpanel"]:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
 
-    .code-proof{display:block;padding:0 22px 18px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#9FB0B3;text-decoration:underline;text-decoration-color:rgba(159,176,179,.4);text-underline-offset:3px}
-    .code-proof:hover{color:#FFFFFF;text-decoration-color:currentColor}
-    .code-proof:focus-visible{outline-offset:-4px}
 
     .case-origin{font-size:14px;line-height:1.55;color:var(--ink-soft);margin-top:-4px}
 
@@ -463,8 +460,6 @@ html[data-theme="dark"] .code-window{border:1px solid rgba(110,167,255,.14);box-
     html[data-theme="dark"] .node small{color:#B9A9F0}
     html[data-theme="dark"] .lang-btn.active,
     html[data-theme="dark"] .btn.primary{color:#071014}
-    .code-window.is-typing .code-proof{opacity:0}
-    .code-proof{transition:opacity .4s ease}
 
     /* menu mobile: navegadores atuais centralizam o .nav fixo por causa do justify-self:center
        herdado do desktop, deixando o painel estreito sobre o conteúdo; aqui ele volta a ocupar a largura toda */
