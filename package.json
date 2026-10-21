@@ -1,0 +1,13 @@
+{
+  "name": "gabriella-maas-portfolio",
+  "private": true,
+  "description": "Portfólio estático de QA. As dependências abaixo servem apenas para os testes E2E; o site não tem build.",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "test:e2e": "cypress run",
+    "cy:open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "15.21.1"
+  }
+}

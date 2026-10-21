@@ -20,6 +20,27 @@
       menu.setAttribute('aria-expanded','false');
     }));
 
+    // abas acessíveis: aria-selected, tabindex itinerante e navegação por setas
+    const selectTab = (tabs, active, panel) => {
+      tabs.forEach(tab => {
+        const isActive = tab === active;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', String(isActive));
+        tab.tabIndex = isActive ? 0 : -1;
+      });
+      if(panel) panel.setAttribute('aria-labelledby', active.id);
+    };
+    const enableArrowKeys = (tabs) => {
+      tabs.forEach((tab, i) => tab.addEventListener('keydown', e => {
+        const keys = {ArrowRight:i + 1, ArrowDown:i + 1, ArrowLeft:i - 1, ArrowUp:i - 1, Home:0, End:tabs.length - 1};
+        if(!(e.key in keys)) return;
+        e.preventDefault();
+        const next = tabs[(keys[e.key] + tabs.length) % tabs.length];
+        next.focus();
+        next.click();
+      }));
+    };
+
     // QA vision
     const visionData = {
       contexto: ['Contexto','Antes de testar, preciso entender para quem aquilo serve, qual problema está sendo resolvido e que decisão de negócio existe por trás da tela. Sem contexto, teste vira apenas conferência.'],
@@ -31,10 +52,12 @@
     };
     const visionLabel = document.getElementById('visionLabel');
     const visionText = document.getElementById('visionText');
-    document.querySelectorAll('.vision-tab').forEach(btn => {
+    const visionPanel = document.getElementById('visionPanel');
+    const visionTabs = [...document.querySelectorAll('.vision-tab')];
+    enableArrowKeys(visionTabs);
+    visionTabs.forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.vision-tab').forEach(x => x.classList.remove('active'));
-        btn.classList.add('active');
+        selectTab(visionTabs, btn, visionPanel);
         const [label,text] = qaVisionByLang[currentLang][btn.dataset.key];
         visionLabel.textContent = label;
         visionText.textContent = text;
@@ -54,10 +77,11 @@
       'Registro o suficiente para outra pessoa entender comportamento, impacto, evidência e condição de reprodução sem precisar reconstruir toda a investigação.'
     ];
     const processCopy = document.getElementById('processCopy');
-    document.querySelectorAll('.step').forEach((btn,i) => {
+    const processSteps = [...document.querySelectorAll('.step')];
+    enableArrowKeys(processSteps);
+    processSteps.forEach((btn,i) => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.step').forEach(x => x.classList.remove('active'));
-        btn.classList.add('active');
+        selectTab(processSteps, btn, processCopy);
         processCopy.textContent = processByLang[currentLang][i];
         if(!reducedMotion && processCopy.animate){
           processCopy.animate([{opacity:.2,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:320,easing:'ease-out'});
@@ -167,10 +191,12 @@
     const themeToggle = document.getElementById('themeToggle');
     const restorePersonalStars = () => {
       document.querySelectorAll('.personal-card strong').forEach(el => {
+        // a estrela já está no HTML: recriar o conteúdo descartaria os nós usados pela tradução
+        if(el.querySelector('.personal-star')) return;
         const text = el.textContent.trim();
         if(text.startsWith('✦')){
           const label = text.replace(/^✦\s*/, '');
-          el.innerHTML = '<span class="personal-star">✦</span> ' + label;
+          el.innerHTML = '<span aria-hidden="true" class="personal-star">✦</span> ' + label;
         }
       });
     };
@@ -191,6 +217,12 @@
       updateThemeToggleText();
     };
     themeToggle?.addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
+    const hasSavedTheme = () => { try { return !!localStorage.getItem('portfolio-theme'); } catch (_) { return false; } };
+    window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change', e => {
+      if(hasSavedTheme()) return;
+      document.documentElement.dataset.theme = e.matches ? 'dark' : 'light';
+      updateThemeToggleText();
+    });
 
 
     // alternância suave entre os dois retratos
