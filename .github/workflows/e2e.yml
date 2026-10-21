@@ -10,18 +10,28 @@ permissions:
 
 jobs:
   cypress:
-    runs-on: ubuntu-latest
+    # Versão fixa do Ubuntu: o rótulo ubuntu-latest está migrando para o Ubuntu 26,
+    # e fixar evita que uma troca de imagem quebre o Cypress sem aviso.
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # Versões feitas para Node 24. As anteriores (v4 e github-action@v6) eram
+      # para Node 20 e o runner passou a forçá-las a rodar no Node 24.
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
-      - uses: cypress-io/github-action@v6
+      # A v6 desta action, forçada a rodar no Node 24, encerrava a espera pelo
+      # servidor na primeira tentativa ("Socket closed before the connection was
+      # established") e o Cypress nem chegava a executar. A v7 roda nativamente
+      # no Node 24 e volta a tentar até o servidor responder.
+      - uses: cypress-io/github-action@v7
         with:
           start: python3 -m http.server 8080
-          wait-on: http://localhost:8080
-      - uses: actions/upload-artifact@v4
+          wait-on: 'http://localhost:8080'
+          wait-on-timeout: 60
+      - uses: actions/upload-artifact@v6
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+          if-no-files-found: ignore
