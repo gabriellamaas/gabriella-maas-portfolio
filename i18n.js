@@ -55,7 +55,6 @@
       'Evoluir formas de visualizar dependências e construir regressão com contexto.':'Improve ways to visualize dependencies and build regression with context.',
       'LinkedIn ↗':'LinkedIn ↗',
       'Contato':'Contact','Pular para o conteúdo':'Skip to content',
-      'Este teste roda de verdade no GitHub Actions ↗':'This test really runs on GitHub Actions ↗',
       /* conteúdo sincronizado com o currículo */
       'Criatividade':'Creativity','Quebra-cabeça':'Puzzles','Música':'Music',
       'Analista de QA · Análise de impacto · Automação · IA aplicada a QA':'QA Analyst · Impact analysis · Automation · AI applied to QA',
